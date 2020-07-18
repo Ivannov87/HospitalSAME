@@ -7,64 +7,3015 @@
  * @url http://www.minicartjs.com/
  * @license MIT <https://github.com/jeffharrell/minicart/raw/master/LICENSE.md>
  */
-(function e$$0(k,c,a){function d(b,g){if(!c[b]){if(!k[b]){var e="function"==typeof require&&require;if(!g&&e)return e(b,!0);if(h)return h(b,!0);throw Error("Cannot find module '"+b+"'");}e=c[b]={exports:{}};k[b][0].call(e.exports,function(a){var e=k[b][1][a];return d(e?e:a)},e,e.exports,e$$0,k,c,a)}return c[b].exports}for(var h="function"==typeof require&&require,l=0;l<a.length;l++)d(a[l]);return d})({1:[function(f,k,c){function a(a){return"[object Array]"===e.call(a)}function d(a,e){var b;if(null===
-a)b={__proto__:null};else{if("object"!==typeof a)throw new TypeError("typeof prototype["+typeof a+"] != 'object'");b=function(){};b.prototype=a;b=new b;b.__proto__=a}"undefined"!==typeof e&&Object.defineProperties&&Object.defineProperties(b,e);return b}function h(a){return"object"!=typeof a&&"function"!=typeof a||null===a}function l(a){if(h(a))throw new TypeError("Object.keys called on a non-object");var e=[],b;for(b in a)p.call(a,b)&&e.push(b);return e}function b(a){if(h(a))throw new TypeError("Object.getOwnPropertyNames called on a non-object");
-var e=l(a);c.isArray(a)&&-1===c.indexOf(a,"length")&&e.push("length");return e}function g(a,e){return{value:a[e]}}var e=Object.prototype.toString,p=Object.prototype.hasOwnProperty;c.isArray="function"===typeof Array.isArray?Array.isArray:a;c.indexOf=function(a,e){if(a.indexOf)return a.indexOf(e);for(var b=0;b<a.length;b++)if(e===a[b])return b;return-1};c.filter=function(a,e){if(a.filter)return a.filter(e);for(var b=[],g=0;g<a.length;g++)e(a[g],g,a)&&b.push(a[g]);return b};c.forEach=function(a,e,b){if(a.forEach)return a.forEach(e,
-b);for(var g=0;g<a.length;g++)e.call(b,a[g],g,a)};c.map=function(a,e){if(a.map)return a.map(e);for(var b=Array(a.length),g=0;g<a.length;g++)b[g]=e(a[g],g,a);return b};c.reduce=function(a,e,b){if(a.reduce)return a.reduce(e,b);var g,c=!1;2<arguments.length&&(g=b,c=!0);for(var d=0,h=a.length;h>d;++d)a.hasOwnProperty(d)&&(c?g=e(g,a[d],d,a):(g=a[d],c=!0));return g};"b"!=="ab".substr(-1)?c.substr=function(a,e,b){0>e&&(e=a.length+e);return a.substr(e,b)}:c.substr=function(a,e,b){return a.substr(e,b)};c.trim=
-function(a){return a.trim?a.trim():a.replace(/^\s+|\s+$/g,"")};c.bind=function(){var a=Array.prototype.slice.call(arguments),e=a.shift();if(e.bind)return e.bind.apply(e,a);var b=a.shift();return function(){e.apply(b,a.concat([Array.prototype.slice.call(arguments)]))}};c.create="function"===typeof Object.create?Object.create:d;var q="function"===typeof Object.keys?Object.keys:l,m="function"===typeof Object.getOwnPropertyNames?Object.getOwnPropertyNames:b;if(Error().hasOwnProperty("description")){var r=
-function(a,b){"[object Error]"===e.call(a)&&(b=c.filter(b,function(a){return"description"!==a&&"number"!==a&&"message"!==a}));return b};c.keys=function(a){return r(a,q(a))};c.getOwnPropertyNames=function(a){return r(a,m(a))}}else c.keys=q,c.getOwnPropertyNames=m;if("function"===typeof Object.getOwnPropertyDescriptor)try{Object.getOwnPropertyDescriptor({a:1},"a"),c.getOwnPropertyDescriptor=Object.getOwnPropertyDescriptor}catch(v){c.getOwnPropertyDescriptor=function(a,e){try{return Object.getOwnPropertyDescriptor(a,
-e)}catch(b){return g(a,e)}}}else c.getOwnPropertyDescriptor=g},{}],2:[function(f,k,c){},{}],3:[function(f,k,c){function a(a,e){for(var b=0,d=a.length-1;0<=d;d--){var c=a[d];"."===c?a.splice(d,1):".."===c?(a.splice(d,1),b++):b&&(a.splice(d,1),b--)}if(e)for(;b--;b)a.unshift("..");return a}var d=f("__browserify_process"),h=f("util"),l=f("_shims"),b=/^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;c.resolve=function(){for(var b="",e=!1,c=arguments.length-1;-1<=c&&!e;c--){var q=0<=c?arguments[c]:
-d.cwd();if(!h.isString(q))throw new TypeError("Arguments to path.resolve must be strings");q&&(b=q+"/"+b,e="/"===q.charAt(0))}b=a(l.filter(b.split("/"),function(a){return!!a}),!e).join("/");return(e?"/":"")+b||"."};c.normalize=function(b){var e=c.isAbsolute(b),d="/"===l.substr(b,-1);(b=a(l.filter(b.split("/"),function(a){return!!a}),!e).join("/"))||e||(b=".");b&&d&&(b+="/");return(e?"/":"")+b};c.isAbsolute=function(a){return"/"===a.charAt(0)};c.join=function(){var a=Array.prototype.slice.call(arguments,
-0);return c.normalize(l.filter(a,function(a,b){if(!h.isString(a))throw new TypeError("Arguments to path.join must be strings");return a}).join("/"))};c.relative=function(a,b){function d(a){for(var b=0;b<a.length&&""===a[b];b++);for(var e=a.length-1;0<=e&&""===a[e];e--);return b>e?[]:a.slice(b,e-b+1)}a=c.resolve(a).substr(1);b=c.resolve(b).substr(1);for(var h=d(a.split("/")),l=d(b.split("/")),f=Math.min(h.length,l.length),v=f,x=0;x<f;x++)if(h[x]!==l[x]){v=x;break}f=[];for(x=v;x<h.length;x++)f.push("..");
-f=f.concat(l.slice(v));return f.join("/")};c.sep="/";c.delimiter=":";c.dirname=function(a){var e=b.exec(a).slice(1);a=e[0];e=e[1];if(!a&&!e)return".";e&&(e=e.substr(0,e.length-1));return a+e};c.basename=function(a,e){var d=b.exec(a).slice(1)[2];e&&d.substr(-1*e.length)===e&&(d=d.substr(0,d.length-e.length));return d};c.extname=function(a){return b.exec(a).slice(1)[3]}},{__browserify_process:5,_shims:1,util:4}],4:[function(f,k,c){function a(a,e){var g={seen:[],stylize:h};3<=arguments.length&&(g.depth=
-arguments[2]);4<=arguments.length&&(g.colors=arguments[3]);r(e)?g.showHidden=e:e&&c._extend(g,e);t(g.showHidden)&&(g.showHidden=!1);t(g.depth)&&(g.depth=2);t(g.colors)&&(g.colors=!1);t(g.customInspect)&&(g.customInspect=!0);g.colors&&(g.stylize=d);return b(g,a,g.depth)}function d(b,e){var d=a.styles[e];return d?"\u001b["+a.colors[d][0]+"m"+b+"\u001b["+a.colors[d][1]+"m":b}function h(a,b){return a}function l(a){var b={};y.forEach(a,function(a,e){b[a]=!0});return b}function b(a,d,h){if(a.customInspect&&
-d&&E(d.inspect)&&d.inspect!==c.inspect&&(!d.constructor||d.constructor.prototype!==d)){var f=d.inspect(h);x(f)||(f=b(a,f,h));return f}if(f=g(a,d))return f;var v=y.keys(d),k=l(v);a.showHidden&&(v=y.getOwnPropertyNames(d));if(0===v.length){if(E(d))return a.stylize("[Function"+(d.name?": "+d.name:"")+"]","special");if(D(d))return a.stylize(RegExp.prototype.toString.call(d),"regexp");if(F(d))return a.stylize(Date.prototype.toString.call(d),"date");if(G(d))return"["+Error.prototype.toString.call(d)+"]"}var f=
-"",t=!1,r=["{","}"];m(d)&&(t=!0,r=["[","]"]);E(d)&&(f=" [Function"+(d.name?": "+d.name:"")+"]");D(d)&&(f=" "+RegExp.prototype.toString.call(d));F(d)&&(f=" "+Date.prototype.toUTCString.call(d));G(d)&&(f=" "+("["+Error.prototype.toString.call(d)+"]"));if(0===v.length&&(!t||0==d.length))return r[0]+f+r[1];if(0>h)return D(d)?a.stylize(RegExp.prototype.toString.call(d),"regexp"):a.stylize("[Object]","special");a.seen.push(d);v=t?e(a,d,h,k,v):v.map(function(b){return p(a,d,h,k,b,t)});a.seen.pop();return q(v,
-f,r)}function g(a,b){if(t(b))return a.stylize("undefined","undefined");if(x(b)){var e="'"+JSON.stringify(b).replace(/^"|"$/g,"").replace(/'/g,"\\'").replace(/\\"/g,'"')+"'";return a.stylize(e,"string")}if(v(b))return a.stylize(""+b,"number");if(r(b))return a.stylize(""+b,"boolean");if(null===b)return a.stylize("null","null")}function e(a,b,e,d,c){for(var g=[],h=0,l=b.length;h<l;++h)Object.prototype.hasOwnProperty.call(b,String(h))?g.push(p(a,b,e,d,String(h),!0)):g.push("");y.forEach(c,function(c){c.match(/^\d+$/)||
-g.push(p(a,b,e,d,c,!0))});return g}function p(a,e,d,c,g,h){var l,f;e=y.getOwnPropertyDescriptor(e,g)||{value:e[g]};e.get?f=e.set?a.stylize("[Getter/Setter]","special"):a.stylize("[Getter]","special"):e.set&&(f=a.stylize("[Setter]","special"));Object.prototype.hasOwnProperty.call(c,g)||(l="["+g+"]");f||(0>y.indexOf(a.seen,e.value)?(f=null===d?b(a,e.value,null):b(a,e.value,d-1),-1<f.indexOf("\n")&&(f=h?f.split("\n").map(function(a){return"  "+a}).join("\n").substr(2):"\n"+f.split("\n").map(function(a){return"   "+
-a}).join("\n"))):f=a.stylize("[Circular]","special"));if(t(l)){if(h&&g.match(/^\d+$/))return f;l=JSON.stringify(""+g);l.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(l=l.substr(1,l.length-2),l=a.stylize(l,"name")):(l=l.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),l=a.stylize(l,"string"))}return l+": "+f}function q(a,b,e){var d=0;return 60<y.reduce(a,function(a,b){d++;0<=b.indexOf("\n")&&d++;return a+b.replace(/\u001b\[\d\d?m/g,"").length+1},0)?e[0]+(""===b?"":b+"\n ")+" "+a.join(",\n  ")+
-" "+e[1]:e[0]+b+" "+a.join(", ")+" "+e[1]}function m(a){return y.isArray(a)}function r(a){return"boolean"===typeof a}function v(a){return"number"===typeof a}function x(a){return"string"===typeof a}function t(a){return void 0===a}function D(a){return B(a)&&"[object RegExp]"===Object.prototype.toString.call(a)}function B(a){return"object"===typeof a&&a}function F(a){return B(a)&&"[object Date]"===Object.prototype.toString.call(a)}function G(a){return B(a)&&"[object Error]"===Object.prototype.toString.call(a)}
-function E(a){return"function"===typeof a}function A(a){return 10>a?"0"+a.toString(10):a.toString(10)}function u(){var a=new Date,b=[A(a.getHours()),A(a.getMinutes()),A(a.getSeconds())].join(":");return[a.getDate(),C[a.getMonth()],b].join(" ")}var y=f("_shims"),w=/%[sdj%]/g;c.format=function(b){if(!x(b)){for(var e=[],d=0;d<arguments.length;d++)e.push(a(arguments[d]));return e.join(" ")}for(var d=1,g=arguments,c=g.length,e=String(b).replace(w,function(a){if("%%"===a)return"%";if(d>=c)return a;switch(a){case "%s":return String(g[d++]);
-case "%d":return Number(g[d++]);case "%j":try{return JSON.stringify(g[d++])}catch(b){return"[Circular]"}default:return a}}),h=g[d];d<c;h=g[++d])e=null!==h&&B(h)?e+(" "+a(h)):e+(" "+h);return e};c.inspect=a;a.colors={bold:[1,22],italic:[3,23],underline:[4,24],inverse:[7,27],white:[37,39],grey:[90,39],black:[30,39],blue:[34,39],cyan:[36,39],green:[32,39],magenta:[35,39],red:[31,39],yellow:[33,39]};a.styles={special:"cyan",number:"yellow","boolean":"yellow",undefined:"grey","null":"bold",string:"green",
-date:"magenta",regexp:"red"};c.isArray=m;c.isBoolean=r;c.isNull=function(a){return null===a};c.isNullOrUndefined=function(a){return null==a};c.isNumber=v;c.isString=x;c.isSymbol=function(a){return"symbol"===typeof a};c.isUndefined=t;c.isRegExp=D;c.isObject=B;c.isDate=F;c.isError=G;c.isFunction=E;c.isPrimitive=function(a){return null===a||"boolean"===typeof a||"number"===typeof a||"string"===typeof a||"symbol"===typeof a||"undefined"===typeof a};c.isBuffer=function(a){return a&&"object"===typeof a&&
-"function"===typeof a.copy&&"function"===typeof a.fill&&"function"===typeof a.binarySlice};var C="Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ");c.log=function(){console.log("%s - %s",u(),c.format.apply(c,arguments))};c.inherits=function(a,b){a.super_=b;a.prototype=y.create(b.prototype,{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}})};c._extend=function(a,b){if(!b||!B(b))return a;for(var e=y.keys(b),d=e.length;d--;)a[e[d]]=b[e[d]];return a}},{_shims:1}],5:[function(f,
-k,c){f=k.exports={};f.nextTick=function(){if("undefined"!==typeof window&&window.setImmediate)return function(a){return window.setImmediate(a)};if("undefined"!==typeof window&&window.postMessage&&window.addEventListener){var a=[];window.addEventListener("message",function(d){var c=d.source;c!==window&&null!==c||"process-tick"!==d.data||(d.stopPropagation(),0<a.length&&a.shift()())},!0);return function(d){a.push(d);window.postMessage("process-tick","*")}}return function(a){setTimeout(a,0)}}();f.title=
-"browser";f.browser=!0;f.env={};f.argv=[];f.binding=function(a){throw Error("process.binding is not supported");};f.cwd=function(){return"/"};f.chdir=function(a){throw Error("process.chdir is not supported");}},{}],6:[function(f,k,c){function a(a){return a.substr(1).split("|").reduce(function(a,b){var e=b.split(":"),d=e.shift();(e=e.join(":")||"")&&(e=", "+e);return"filters."+d+"("+a+e+")"})}function d(a,b,e,d){b=b.split("\n");var g=Math.max(d-3,0),c=Math.min(b.length,d+3);b=b.slice(g,c).map(function(a,
-b){var e=b+g+1;return(e==d?" >> ":"    ")+e+"| "+a}).join("\n");a.path=e;a.message=(e||"ejs")+":"+d+"\n"+b+"\n\n"+a.message;throw a;}var h=f("./utils");k=f("path");var l=k.dirname,b=k.extname,g=k.join,e=f("fs"),p=e.readFileSync,q=c.filters=f("./filters"),m={};c.clearCache=function(){m={}};c.parse=function(e,d){d=d||{};var h=d.open||c.open||"<%",f=d.close||c.close||"%>",q=d.filename,k=!1!==d.compileDebug,m;m="var buf = [];";!1!==d._with&&(m+="\nwith (locals || {}) { (function(){ ");m+="\n buf.push('";
-for(var r=1,A=!1,u=0,y=e.length;u<y;++u){var w=e[u];if(e.slice(u,h.length+u)==h){var u=u+h.length,C,w=(k?"__stack.lineno=":"")+r;switch(e[u]){case "=":w="', escape(("+w+", ";C=")), '";++u;break;case "-":w="', ("+w+", ";C="), '";++u;break;default:w="');"+w+";",C="; buf.push('"}var I=e.indexOf(f,u),n=e.substring(u,I),J=u,z=null,H=0;"-"==n[n.length-1]&&(n=n.substring(0,n.length-2),A=!0);if(0==n.trim().indexOf("include")){z=n.trim().slice(7).trim();if(!q)throw Error("filename option is required for includes");
-n=g(l(q),z);b(z)||(n+=".ejs");z=p(n,"utf8");z=c.parse(z,{filename:n,_with:!1,open:h,close:f,compileDebug:k});m+="' + (function(){"+z+"})() + '";n=""}for(;~(H=n.indexOf("\n",H));)H++,r++;":"==n.substr(0,1)&&(n=a(n));n&&(n.lastIndexOf("//")>n.lastIndexOf("\n")&&(n+="\n"),m+=w,m+=n,m+=C);u+=I-J+f.length-1}else"\\"==w?m+="\\\\":"'"==w?m+="\\'":"\r"!=w&&("\n"==w?A?A=!1:(m+="\\n",r++):m+=w)}return m=!1!==d._with?m+"'); })();\n} \nreturn buf.join('');":m+"');\nreturn buf.join('');"};var r=c.compile=function(a,
-b){b=b||{};var e=b.escape||h.escape,g=JSON.stringify(a),l=!1!==b.compileDebug,f=b.client,m=b.filename?JSON.stringify(b.filename):"undefined";a=l?["var __stack = { lineno: 1, input: "+g+", filename: "+m+" };",d.toString(),"try {",c.parse(a,b),"} catch (err) {\n  rethrow(err, __stack.input, __stack.filename, __stack.lineno);\n}"].join("\n"):c.parse(a,b);b.debug&&console.log(a);f&&(a="escape = escape || "+e.toString()+";\n"+a);try{var p=new Function("locals, filters, escape, rethrow",a)}catch(k){throw"SyntaxError"==
-k.name&&(k.message+=b.filename?" in "+m:" while compiling ejs"),k;}return f?p:function(a){return p.call(this,a,q,e,d)}};c.render=function(a,b){var e;b=b||{};if(b.cache)if(b.filename)e=m[b.filename]||(m[b.filename]=r(a,b));else throw Error('"cache" option requires "filename".');else e=r(a,b);b.__proto__=b.locals;return e.call(b.scope,b)};c.renderFile=function(a,b,e){var d=a+":string";"function"==typeof b&&(e=b,b={});b.filename=a;var g;try{g=b.cache?m[d]||(m[d]=p(a,"utf8")):p(a,"utf8")}catch(h){e(h);
-return}e(null,c.render(g,b))};c.__express=c.renderFile;f.extensions?f.extensions[".ejs"]=function(a,b){b=b||a.filename;var d={filename:b,client:!0},g=e.readFileSync(b).toString(),d=r(g,d);a._compile("module.exports = "+d.toString()+";",b)}:f.registerExtension&&f.registerExtension(".ejs",function(a){return r(a,{})})},{"./filters":7,"./utils":8,fs:2,path:3}],7:[function(f,k,c){c.first=function(a){return a[0]};c.last=function(a){return a[a.length-1]};c.capitalize=function(a){a=String(a);return a[0].toUpperCase()+
-a.substr(1,a.length)};c.downcase=function(a){return String(a).toLowerCase()};c.upcase=function(a){return String(a).toUpperCase()};c.sort=function(a){return Object.create(a).sort()};c.sort_by=function(a,d){return Object.create(a).sort(function(a,c){a=a[d];c=c[d];return a>c?1:a<c?-1:0})};c.size=c.length=function(a){return a.length};c.plus=function(a,d){return Number(a)+Number(d)};c.minus=function(a,d){return Number(a)-Number(d)};c.times=function(a,d){return Number(a)*Number(d)};c.divided_by=function(a,
-d){return Number(a)/Number(d)};c.join=function(a,d){return a.join(d||", ")};c.truncate=function(a,d,c){a=String(a);a.length>d&&(a=a.slice(0,d),c&&(a+=c));return a};c.truncate_words=function(a,d){a=String(a);return a.split(/ +/).slice(0,d).join(" ")};c.replace=function(a,d,c){return String(a).replace(d,c||"")};c.prepend=function(a,d){return Array.isArray(a)?[d].concat(a):d+a};c.append=function(a,d){return Array.isArray(a)?a.concat(d):a+d};c.map=function(a,d){return a.map(function(a){return a[d]})};
-c.reverse=function(a){return Array.isArray(a)?a.reverse():String(a).split("").reverse().join("")};c.get=function(a,d){return a[d]};c.json=function(a){return JSON.stringify(a)}},{}],8:[function(f,k,c){c.escape=function(a){return String(a).replace(/&(?!#?[a-zA-Z0-9]+;)/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/'/g,"&#39;").replace(/"/g,"&quot;")}},{}],9:[function(f,k,c){function a(a,d){var g,c,f;this._items=[];this._settings={bn:b.BN};h.call(this);l.call(this,a,d);if(g=this.load()){c=
-g.items;if(g=g.settings)this._settings=g;if(c)for(f=0,g=c.length;f<g;f++)this.add(c[f])}}var d=f("./product"),h=f("./util/pubsub"),l=f("./util/storage"),b=f("./constants"),g=f("./util/currency");f=f("./util/mixin");f(a.prototype,h.prototype);f(a.prototype,l.prototype);a.prototype.add=function(a){var g=this,c=this.items(),h=!1,f=!1,l,k,t;console.log(a);for(k in a)b.SETTINGS.test(k)&&(this._settings[k]=a[k],delete a[k]);t=0;for(k=c.length;t<k;t++)if(c[t].isEqual(a)){l=c[t];l.set("quantity",l.get("quantity")+
-(parseInt(a.quantity,10)||1));h=t;f=!0;break}l||(l=new d(a),l.isValid()&&(h=this._items.push(l)-1,l.on("change",function(a,b){g.save();g.fire("change",h,a,b)}),this.save()));l&&this.fire("add",h,l,f);return h};a.prototype.items=function(a){return"number"===typeof a?this._items[a]:this._items};a.prototype.settings=function(a){return a?this._settings[a]:this._settings};a.prototype.discount=function(a){var b=parseFloat(this.settings("discount_amount_cart"))||0;b||(b=(parseFloat(this.settings("discount_rate_cart"))||
-0)*this.subtotal()/100);a=a||{};a.currency=this.settings("currency_code");return g(b,a)};a.prototype.subtotal=function(a){var b=this.items(),d=0,c,h;c=0;for(h=b.length;c<h;c++)d+=b[c].total();a=a||{};a.currency=this.settings("currency_code");return g(d,a)};a.prototype.total=function(a){var b;b=0+this.subtotal();b-=this.discount();a=a||{};a.currency=this.settings("currency_code");return g(b,a)};a.prototype.remove=function(a){var b=this._items.splice(a,1);0===this._items.length&&this.destroy();b&&(this.save(),
-this.fire("remove",a,b[0]));return!!b.length};a.prototype.save=function(){var a=this.items(),b=this.settings(),d=[],c,g;c=0;for(g=a.length;c<g;c++)d.push(a[c].get());l.prototype.save.call(this,{items:d,settings:b})};a.prototype.checkout=function(a){this.fire("checkout",a)};a.prototype.destroy=function(){l.prototype.destroy.call(this);this._items=[];this._settings={bn:b.BN};this.fire("destroy")};k.exports=a},{"./constants":11,"./product":13,"./util/currency":15,"./util/mixin":18,"./util/pubsub":19,
-"./util/storage":20}],10:[function(f,k,c){var a=f("./util/mixin"),d=k.exports={name:"PPMiniCart",parent:"undefined"!==typeof document?document.body:null,action:"https://www.paypal.com/cgi-bin/webscr",target:"",duration:30,template:'<% var items = cart.items(); var settings = cart.settings(); var hasItems = !!items.length; var priceFormat = {    format: true,    currency: cart.settings("currency_code")  }; var totalFormat = {    format: true,    showCode: true  }; %><form class="<% if (!hasItems) { %>minicart-empty<% } %>" target="<%= config.target %>">    <button type="button" class="minicart-closer">&times;</button>    <ul>        <% for (var i= 0, idx = i + 1, len = items.length; i < len; i++, idx++) { %>        <li class="minicart-item">            <div class="minicart-details-name">                <a class="minicart-name" href="<%= items[i].get("href") %>"> <%= items[i].get("item_name") %> </a>                <ul class="minicart-attributes">                    <% if (items[i].get("item_number")) { %>                    <li>                        <%= items[i].get("item_number") %>                        <input type="hidden" name="item_number_<%= idx %>" value="<%= items[i].get("item_number") %>" />                    </li>                    <% } %>                    <% if (items[i].discount()) { %>                    <li>                        <%= config.strings.discount %> <%= items[i].discount(priceFormat) %>                        <input type="hidden" name="discount_amount_<%= idx %>" value="<%= items[i].discount() %>" />                    </li>                    <% } %>                    <% for (var options = items[i].options(), j = 0, len2 = options.length; j < len2; j++) { %>                        <li>                            <%= options[j].key %>: <%= options[j].value %>                            <input type="hidden" name="on<%= j %>_<%= idx %>" value="<%= options[j].key %>" />                            <input type="hidden" name="os<%= j %>_<%= idx %>" value="<%= options[j].value %>" />                        </li>                    <% } %>                </ul>            </div>            <div class="minicart-details-quantity">                <input class="minicart-quantity" data-minicart-idx="<%= i %>" name="quantity_<%= idx %>" type="text" pattern="[0-9]*" value="<%= items[i].get("quantity") %>" autocomplete="off" />            </div>            <div class="minicart-details-remove">                <button type="button" class="minicart-remove" data-minicart-idx="<%= i %>">&times;</button>            </div>            <div class="minicart-details-price">                <span class="minicart-price"><%= items[i].total(priceFormat) %></span>            </div>            <input type="hidden" name="item_name_<%= idx %>" value="<%= items[i].get("item_name") %>" />            <input type="hidden" name="amount_<%= idx %>" value="<%= items[i].amount() %>" />            <input type="hidden" name="shipping_<%= idx %>" value="<%= items[i].get("shipping") %>" />            <input type="hidden" name="shipping2_<%= idx %>" value="<%= items[i].get("shipping2") %>" />        </li>        <% } %>    </ul>    <div class="minicart-footer">        <% if (hasItems) { %>            <div class="minicart-subtotal">                <%= config.strings.subtotal %> <%= cart.total(totalFormat) %>            </div>            <button id="btnPagar" class="minicart-submit" type="button" onclick="Pagar();" data-minicart-alt="<%= config.strings.buttonAlt %>"><%- config.strings.button %></button>        <% } else { %>            <p class="minicart-empty-text"><%= config.strings.empty %></p>        <% } %>    </div>    <input type="hidden" name="cmd" value="_cart" />    <input type="hidden" name="upload" value="1" />    <% for (var key in settings) { %>        <input type="hidden" name="<%= key %>" value="<%= settings[key] %>" />    <% } %></form>',
-styles:'@keyframes pop-in {    0% {        opacity: 0;        transform: scale(0.1);    }    60% {        opacity: 1;        transform: scale(1.2);    }    100% {        transform: scale(1);    }}@-webkit-keyframes pop-in {    0% {        opacity: 0;        -webkit-transform: scale(0.1);    }    60% {        opacity: 1;        -webkit-transform: scale(1.2);    }    100% {        -webkit-transform: scale(1);    }}@-moz-keyframes pop-in {    0% {        opacity: 0;        -moz-transform: scale(0.1);    }    60% {        opacity: 1;        -moz-transform: scale(1.2);    }    100% {        -moz-transform: scale(1);    }}.minicart-showing #PPMiniCart {    display: block;    transform: translate(-50%, -50%);    -webkit-transform: translate(-50%, -50%);    /*-moz-transform: translateZ(0);    animation: pop-in 0.25s;    -webkit-animation: pop-in 0.25s;    -moz-animation: pop-in 0.25s;*/}#PPMiniCart {    display: none;    position: fixed;    left: 50%;    top: 50%;    transform: translate(-50%, -50%);    -webkit-transform: translate(-50%, -50%);}#PPMiniCart form {    position: relative;    width: 95vw;    max-width: 400px;    max-height: 400px;    padding: 10px 10px 75px;    background: #fbfbfb;    border: 1px solid #d7d7d7;    border-radius: 4px;    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);    font: 15px/normal arial, helvetica;    color: #333;}#PPMiniCart form.minicart-empty {    padding-bottom: 10px;    font-size: 16px;    font-weight: bold;}#PPMiniCart ul {    clear: both;    float: left;    width: 100%;    margin: 5px 0 20px;    padding: 10px;    list-style-type: none;    background: #fff;    border: 1px solid #ccc;    border-radius: 4px;    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);}#PPMiniCart .minicart-empty ul {    display: none;}#PPMiniCart .minicart-closer {    float: right;    margin: -12px -10px 0;    padding: 10px;    background: 0;    border: 0;    font-size: 18px;    cursor: pointer;    font-weight: bold;}#PPMiniCart .minicart-item {    clear: left;    padding: 6px 0;    min-height: 25px;}#PPMiniCart .minicart-item + .minicart-item {    border-top: 1px solid #f2f2f2;}#PPMiniCart .minicart-item a {    color: #333;    text-decoration: none;}#PPMiniCart .minicart-details-name {    float: left;    width: 58%;}#PPMiniCart .minicart-details-quantity {    float: left;    width: 15%;}#PPMiniCart .minicart-details-remove {    float: left;    width: 7%;}#PPMiniCart .minicart-details-price {    float: left;    width: 20%;    text-align: right;}#PPMiniCart .minicart-attributes {    margin: 0;    padding: 0;    background: transparent;    border: 0;    border-radius: 0;    box-shadow: none;    color: #999;    font-size: 12px;    line-height: 22px;}#PPMiniCart .minicart-attributes li {    display: inline;}#PPMiniCart .minicart-attributes li:after {    content: ",";}#PPMiniCart .minicart-attributes li:last-child:after {    content: "";}#PPMiniCart .minicart-quantity {    width: 30px;    height: 18px;    padding: 2px 4px;    border: 1px solid #ccc;    border-radius: 4px;    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);    font-size: 13px;    text-align: right;    transition: border linear 0.2s, box-shadow linear 0.2s;    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;}#PPMiniCart .minicart-quantity:hover {    border-color: #0078C1;}#PPMiniCart .minicart-quantity:focus {    border-color: #0078C1;    outline: 0;    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px rgba(0, 120, 193, 0.4);}#PPMiniCart .minicart-remove {    width: 18px;    height: 19px;    margin: 2px 0 0;    padding: 0;    background: #b7b7b7;    border: 1px solid #a3a3a3;    border-radius: 3px;    color: #fff;    font-size: 13px;    opacity: 0.70;    cursor: pointer;}#PPMiniCart .minicart-remove:hover {    opacity: 1;}#PPMiniCart .minicart-footer {    clear: left;}#PPMiniCart .minicart-subtotal {    position: absolute;    bottom: 52px;    padding-left: 6px;    left: 10px;    font-size: 16px;    font-weight: bold;}#PPMiniCart .minicart-submit {    position: absolute;    bottom: 10px;    right: 10px;    min-width: 153px;    height: 33px;    margin-right: 6px;    padding: 0 9px;    border: 1px solid #ffc727;    border-radius: 5px;    color: #000;    text-shadow: 1px 1px 1px #fff6e9;    cursor: pointer;    background: #ffaa00;    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZjZlOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmFhMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);    background: -moz-linear-gradient(top, #fff6e9 0%, #ffaa00 100%);    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff6e9), color-stop(100%, #ffaa00));    background: -webkit-linear-gradient(top, #fff6e9 0%, #ffaa00 100%);    background: -o-linear-gradient(top, #fff6e9 0%, #ffaa00 100%);    background: -ms-linear-gradient(top, #fff6e9 0%, #ffaa00 100%);    background: linear-gradient(to bottom, #fff6e9 0%, #ffaa00 100%);}#PPMiniCart .minicart-submit img {    vertical-align: middle;    padding: 4px 0 0 2px;}',
-strings:{button:' ',subtotal:"",discount:"Discount:",empty:"Your shopping cart is empty"}};k.exports.load=function(c){return a(d,c)}},{"./util/mixin":18}],11:[function(f,k,c){k.exports={COMMANDS:{_cart:!0,_xclick:!0,_donations:!0},SETTINGS:/^(?:business|currency_code|lc|paymentaction|no_shipping|cn|no_note|invoice|handling_cart|weight_cart|weight_unit|tax_cart|discount_amount_cart|discount_rate_cart|page_style|image_url|cpp_|cs|cbt|return|cancel_return|notify_url|rm|custom|charset)/,
-BN:"MiniCart_AddToCart_WPS_US",KEYUP_TIMEOUT:500,SHOWING_CLASS:"minicart-showing",REMOVE_CLASS:"minicart-remove",CLOSER_CLASS:"minicart-closer",QUANTITY_CLASS:"minicart-quantity",ITEM_CLASS:"minicart-item",ITEM_CHANGED_CLASS:"minicart-item-changed",SUBMIT_CLASS:"minicart-submit",DATA_IDX:"data-minicart-idx"}},{}],12:[function(f,k,c){var a=f("./cart"),d=f("./view"),h=f("./config"),l={},b,g,e;l.render=function(c){g=l.config=h.load(c);b=l.cart=new a(g.name,g.duration);e=l.view=new d({config:g,cart:b});
-b.on("add",e.addItem,e);b.on("change",e.changeItem,e);b.on("remove",e.removeItem,e);b.on("destroy",e.hide,e)};l.reset=function(){b.destroy();e.hide();e.redraw()};"undefined"===typeof window?k.exports=l:(window.paypal||(window.paypal={}),window.paypal.minicart=l)},{"./cart":9,"./config":10,"./view":22}],13:[function(f,k,c){function a(a){a.quantity=l.quantity(a.quantity);a.amount=l.amount(a.amount);a.href=l.href(a.href);this._data=a;this._total=this._amount=this._discount=this._options=null;h.call(this)}
-var d=f("./util/currency"),h=f("./util/pubsub"),l={quantity:function(a){a=parseInt(a,10);if(isNaN(a)||!a)a=1;return a},amount:function(a){return parseFloat(a)||0},href:function(a){return a?a:"undefined"!==typeof window?window.location.href:null}};f("./util/mixin")(a.prototype,h.prototype);a.prototype.get=function(a){return a?this._data[a]:this._data};a.prototype.set=function(a,d){var e=l[a];this._data[a]=e?e(d):d;this._total=this._amount=this._discount=this._options=null;this.fire("change",a)};a.prototype.options=
-function(){var a,d,e,c,h,f;if(!this._options){a=[];for(h=0;d=this.get("on"+h);){e=this.get("os"+h);for(f=c=0;"undefined"!==typeof this.get("option_select"+f);){if(this.get("option_select"+f)===e){c=l.amount(this.get("option_amount"+f));break}f++}a.push({key:d,value:e,amount:c});h++}this._options=a}return this._options};a.prototype.discount=function(a){var c,e,h,f;this._discount||(h=0,e=parseInt(this.get("discount_num"),10)||0,e=Math.max(e,this.get("quantity")-1),void 0!==this.get("discount_amount")?
-(c=l.amount(this.get("discount_amount")),h=h+c+l.amount(this.get("discount_amount2")||c)*e):void 0!==this.get("discount_rate")&&(c=l.amount(this.get("discount_rate")),f=this.amount(),h+=c*f/100,h+=l.amount(this.get("discount_rate2")||c)*f*e/100),this._discount=h);return d(this._discount,a)};a.prototype.amount=function(a){var c,e,h,f;if(!this._amount){c=this.get("amount");e=this.options();f=0;for(h=e.length;f<h;f++)c+=e[f].amount;this._amount=c}return d(this._amount,a)};a.prototype.total=function(a){var c;
-this._total||(c=this.get("quantity")*this.amount(),c-=this.discount(),this._total=l.amount(c));return d(this._total,a)};a.prototype.isEqual=function(b){var d=!1;b instanceof a&&(b=b._data);if(this.get("item_name")===b.item_name&&this.get("item_number")===b.item_number&&this.get("amount")===l.amount(b.amount))for(var e=0,d=!0;"undefined"!==typeof b["os"+e];){if(this.get("os"+e)!==b["os"+e]){d=!1;break}e++}return d};a.prototype.isValid=function(){return this.get("item_name")&&0<this.amount()};a.prototype.destroy=
-function(){this._data=[];this.fire("destroy",this)};k.exports=a},{"./util/currency":15,"./util/mixin":18,"./util/pubsub":19}],14:[function(f,k,c){k.exports.add=function(a,d){var c;if(!a)return!1;a&&a.classList&&a.classList.add?a.classList.add(d):(c=new RegExp("\\b"+d+"\\b"),c.test(a.className)||(a.className+=" "+d))};k.exports.remove=function(a,d){var c;if(!a)return!1;a.classList&&a.classList.add?a.classList.remove(d):(c=new RegExp("\\b"+d+"\\b"),c.test(a.className)&&(a.className=a.className.replace(c,
-"")))};k.exports.inject=function(a,d){var c;if(!a)return!1;d&&(c=document.createElement("style"),c.type="text/css",c.styleSheet?c.styleSheet.cssText=d:c.appendChild(document.createTextNode(d)),a.appendChild(c))}},{}],15:[function(f,k,c){var a={AED:{before:"\u062c"},ANG:{before:"\u0192"},ARS:{before:"$",code:!0},AUD:{before:"$",code:!0},AWG:{before:"\u0192"},BBD:{before:"$",code:!0},BGN:{before:"\u043b\u0432"},BMD:{before:"$",code:!0},BND:{before:"$",code:!0},BRL:{before:"R$"},BSD:{before:"$",code:!0},
-CAD:{before:"$",code:!0},CHF:{before:"",code:!0},CLP:{before:"$",code:!0},CNY:{before:"\u00a5"},COP:{before:"$",code:!0},CRC:{before:"\u20a1"},CZK:{before:"Kc"},DKK:{before:"kr"},DOP:{before:"$",code:!0},EEK:{before:"kr"},EUR:{before:"\u20ac"},GBP:{before:"\u00a3"},GTQ:{before:"Q"},HKD:{before:"$",code:!0},HRK:{before:"kn"},HUF:{before:"Ft"},IDR:{before:"Rp"},ILS:{before:"\u20aa"},INR:{before:"Rs."},ISK:{before:"kr"},JMD:{before:"J$"},JPY:{before:"\u00a5"},KRW:{before:"\u20a9"},KYD:{before:"$",code:!0},
-LTL:{before:"Lt"},LVL:{before:"Ls"},MXN:{before:"$",code:!0},MYR:{before:"RM"},NOK:{before:"kr"},NZD:{before:"$",code:!0},PEN:{before:"S/"},PHP:{before:"Php"},PLN:{before:"z"},QAR:{before:"\ufdfc"},RON:{before:"lei"},RUB:{after:" \u0440\u0443\u0431"},SAR:{before:"\ufdfc"},SEK:{before:"kr"},SGD:{before:"$",code:!0},THB:{before:"\u0e3f"},TRY:{before:"TL"},TTD:{before:"TT$"},TWD:{before:"NT$"},UAH:{before:"\u20b4"},USD:{before:"$",code:!0},UYU:{before:"$U"},VEF:{before:"Bs"},VND:{before:"\u20ab"},XCD:{before:"$",
-code:!0},ZAR:{before:"R"}};k.exports=function(d,c){var f=c&&c.currency||"USD",b=a[f],g=b.before||"",e=b.after||"",k=b.length||2,b=b.code&&c&&c.showCode,q=d;c&&c.format&&(q=g+q.toFixed(k)+e);b&&(q+=" "+f);return q}},{}],16:[function(f,k,c){k.exports=function(a,d){var c=[];if(d){if(d.addEventListener)return{add:function(a,b,d,e){e=e||a;var f=function(a){d.call(e,a)};a.addEventListener(b,f,!1);c.push([a,b,d,f])},remove:function(a,b,d){var e,f=c.length,k;for(k=0;k<f;k++)if(e=c[k],e[0]===a&&e[1]===b&&
-e[2]===d&&(e=e[3]))return a.removeEventListener(b,e,!1),c=c.slice(k),!0}};if(d.attachEvent)return{add:function(d,b,f,e){e=e||d;var k=function(){var b=a.event;b.target=b.target||b.srcElement;b.preventDefault=function(){b.returnValue=!1};f.call(e,b)};d.attachEvent("on"+b,k);c.push([d,b,f,k])},remove:function(a,b,d){var e,f=c.length,k;for(k=0;k<f;k++)if(e=c[k],e[0]===a&&e[1]===b&&e[2]===d&&(e=e[3]))return a.detachEvent("on"+b,e),c=c.slice(k),!0}}}else return{add:function(){},remove:function(){}}}("undefined"===
-typeof window?null:window,"undefined"===typeof document?null:document)},{}],17:[function(f,k,c){var a=k.exports={parse:function(d){d=d.elements;var c={},f,b,g,e;g=0;for(e=d.length;g<e;g++)if(f=d[g],b=a.getInputValue(f))c[f.name]=b;return c},getInputValue:function(a){var c=a.tagName.toLowerCase();return"select"===c?a.options[a.selectedIndex].value:"textarea"===c?a.innerText:"radio"===a.type?a.checked?a.value:null:"checkbox"===a.type?a.checked?a.value:null:a.value}}},{}],18:[function(f,k,c){k.exports=
-function d(c,f){var b,g;for(g in f)(b=f[g])&&b.constructor===Object?c[g]?d(c[g]||{},b):c[g]=b:c[g]=b;return c}},{}],19:[function(f,k,c){function a(){this._eventCache={}}a.prototype.on=function(a,c,f){var b=this._eventCache[a];b||(b=this._eventCache[a]=[]);b.push([c,f])};a.prototype.off=function(a,c){var f=this._eventCache[a],b,g;if(f)for(b=0,g=f.length;b<g;b++)f[b]===c&&(f=f.splice(b,1))};a.prototype.fire=function(a){var c=this._eventCache[a],f,b,g,e;if(c)for(f=0,b=c.length;f<b;f++)g=c[f][0],e=c[f][1]||
-this,"function"===typeof g&&g.apply(e,Array.prototype.slice.call(arguments,1))};k.exports=a},{}],20:[function(f,k,c){f=(k.exports=function(a,c){this._name=a;this._duration=c||30}).prototype;f.load=function(){if("object"===typeof window&&window.localStorage){var a=window.localStorage.getItem(this._name),c,f;a&&(a=JSON.parse(decodeURIComponent(a)));if(a&&a.expires&&(c=new Date,f=new Date(a.expires),c>f)){this.destroy();return}return a&&a.value}};f.save=function(a){if("object"===typeof window&&window.localStorage){var c=
-new Date;c.setTime(c.getTime()+864E5*this._duration);a={value:a,expires:c.toGMTString()};window.localStorage.setItem(this._name,encodeURIComponent(JSON.stringify(a)))}};f.destroy=function(){"object"===typeof window&&window.localStorage&&window.localStorage.removeItem(this._name)}},{}],21:[function(f,k,c){var a=f("ejs");k.exports=function(c,f){return a.render(c,f)};String.prototype.trim||(String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,"")})},{ejs:6}],22:[function(f,k,c){function a(a){var b;
-this.el=b=document.createElement("div");this.model=a;this.isShowing=!1;b.id=d.name;d.parent.appendChild(b);g.inject(document.getElementsByTagName("head")[0],d.styles);h.add(document,"ontouchstart"in window?"touchstart":"click",e.click,this);h.add(document,"keyup",e.keyup,this);h.add(document,"readystatechange",e.readystatechange,this);h.add(window,"pageshow",e.pageshow,this)}var d=f("./config"),h=f("./util/events"),l=f("./util/template"),b=f("./util/forms"),g=f("./util/css"),e=f("./viewevents"),p=
-f("./constants");a.prototype.redraw=function(){h.remove(this.el.querySelector("form"),"submit",this.model.cart.checkout,this.model.cart);this.el.innerHTML=l(d.template,this.model);h.add(this.el.querySelector("form"),"submit",this.model.cart.checkout,this.model.cart)};a.prototype.show=function(){this.isShowing||(g.add(document.body,p.SHOWING_CLASS),this.isShowing=!0)};a.prototype.hide=function(){this.isShowing&&(g.remove(document.body,p.SHOWING_CLASS),this.isShowing=!1)};a.prototype.toggle=function(){this[this.isShowing?
-"hide":"show"]()};a.prototype.bind=function(a){var c=this;if(!p.COMMANDS[a.cmd.value]||a.hasMinicart)return!1;a.hasMinicart=!0;a.display?h.add(a,"submit",function(a){a.preventDefault();c.show()}):h.add(a,"submit",function(e){e.preventDefault(e);c.model.cart.add(b.parse(a))});return!0};a.prototype.addItem=function(a,b){this.redraw();var c=this.el.querySelectorAll("."+p.ITEM_CLASS);g.add(c[a],p.ITEM_CHANGED_CLASS)};a.prototype.changeItem=function(a,b){this.redraw();var c=this.el.querySelectorAll("."+
-p.ITEM_CLASS);g.add(c[a],p.ITEM_CHANGED_CLASS)};a.prototype.removeItem=function(a){this.redraw()};k.exports=a},{"./config":10,"./constants":11,"./util/css":14,"./util/events":16,"./util/forms":17,"./util/template":21,"./viewevents":23}],23:[function(f,k,c){var a=f("./constants"),d=f("./util/events"),h;k.exports=h={click:function(c){var b=c.target,d=b.className;if(this.isShowing)if(d===a.CLOSER_CLASS)this.hide(),c.preventDefault();else if(d===a.REMOVE_CLASS)this.model.cart.remove(b.getAttribute(a.DATA_IDX));
-else if(d===a.QUANTITY_CLASS)b[b.setSelectionRange?"setSelectionRange":"select"](0,999);else if(!/input|button|select|option/i.test(b.tagName)){for(;1===b.nodeType;){if(b===this.el)return;b=b.parentNode}this.hide()}},keyup:function(c){var b=this,d=c.target;d.className===a.QUANTITY_CLASS&&setTimeout(function(){var c=parseInt(d.getAttribute(a.DATA_IDX),10),f=b.model.cart,h=f.items(c),k=parseInt(d.value,10);h&&(0<k?h.set("quantity",k):0===k&&f.remove(c))},a.KEYUP_TIMEOUT)},readystatechange:function(){if(/interactive|complete/.test(document.readyState)){var c,
-b,f,e;c=document.getElementsByTagName("form");f=0;for(e=c.length;f<e;f++)b=c[f],b.cmd&&a.COMMANDS[b.cmd.value]&&this.bind(b);this.redraw();d.remove(document,"readystatechange",h.readystatechange)}},pageshow:function(a){a.persisted&&(this.redraw(),this.hide())}}},{"./constants":11,"./util/events":16}]},{},[9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]);
+
+;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+
+//
+// The shims in this file are not fully implemented shims for the ES5
+// features, but do work for the particular usecases there is in
+// the other modules.
+//
+
+var toString = Object.prototype.toString;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+// Array.isArray is supported in IE9
+function isArray(xs) {
+  return toString.call(xs) === '[object Array]';
+}
+exports.isArray = typeof Array.isArray === 'function' ? Array.isArray : isArray;
+
+// Array.prototype.indexOf is supported in IE9
+exports.indexOf = function indexOf(xs, x) {
+  if (xs.indexOf) return xs.indexOf(x);
+  for (var i = 0; i < xs.length; i++) {
+    if (x === xs[i]) return i;
+  }
+  return -1;
+};
+
+// Array.prototype.filter is supported in IE9
+exports.filter = function filter(xs, fn) {
+  if (xs.filter) return xs.filter(fn);
+  var res = [];
+  for (var i = 0; i < xs.length; i++) {
+    if (fn(xs[i], i, xs)) res.push(xs[i]);
+  }
+  return res;
+};
+
+// Array.prototype.forEach is supported in IE9
+exports.forEach = function forEach(xs, fn, self) {
+  if (xs.forEach) return xs.forEach(fn, self);
+  for (var i = 0; i < xs.length; i++) {
+    fn.call(self, xs[i], i, xs);
+  }
+};
+
+// Array.prototype.map is supported in IE9
+exports.map = function map(xs, fn) {
+  if (xs.map) return xs.map(fn);
+  var out = new Array(xs.length);
+  for (var i = 0; i < xs.length; i++) {
+    out[i] = fn(xs[i], i, xs);
+  }
+  return out;
+};
+
+// Array.prototype.reduce is supported in IE9
+exports.reduce = function reduce(array, callback, opt_initialValue) {
+  if (array.reduce) return array.reduce(callback, opt_initialValue);
+  var value, isValueSet = false;
+
+  if (2 < arguments.length) {
+    value = opt_initialValue;
+    isValueSet = true;
+  }
+  for (var i = 0, l = array.length; l > i; ++i) {
+    if (array.hasOwnProperty(i)) {
+      if (isValueSet) {
+        value = callback(value, array[i], i, array);
+      }
+      else {
+        value = array[i];
+        isValueSet = true;
+      }
+    }
+  }
+
+  return value;
+};
+
+// String.prototype.substr - negative index don't work in IE8
+if ('ab'.substr(-1) !== 'b') {
+  exports.substr = function (str, start, length) {
+    // did we get a negative start, calculate how much it is from the beginning of the string
+    if (start < 0) start = str.length + start;
+
+    // call the original function
+    return str.substr(start, length);
+  };
+} else {
+  exports.substr = function (str, start, length) {
+    return str.substr(start, length);
+  };
+}
+
+// String.prototype.trim is supported in IE9
+exports.trim = function (str) {
+  if (str.trim) return str.trim();
+  return str.replace(/^\s+|\s+$/g, '');
+};
+
+// Function.prototype.bind is supported in IE9
+exports.bind = function () {
+  var args = Array.prototype.slice.call(arguments);
+  var fn = args.shift();
+  if (fn.bind) return fn.bind.apply(fn, args);
+  var self = args.shift();
+  return function () {
+    fn.apply(self, args.concat([Array.prototype.slice.call(arguments)]));
+  };
+};
+
+// Object.create is supported in IE9
+function create(prototype, properties) {
+  var object;
+  if (prototype === null) {
+    object = { '__proto__' : null };
+  }
+  else {
+    if (typeof prototype !== 'object') {
+      throw new TypeError(
+        'typeof prototype[' + (typeof prototype) + '] != \'object\''
+      );
+    }
+    var Type = function () {};
+    Type.prototype = prototype;
+    object = new Type();
+    object.__proto__ = prototype;
+  }
+  if (typeof properties !== 'undefined' && Object.defineProperties) {
+    Object.defineProperties(object, properties);
+  }
+  return object;
+}
+exports.create = typeof Object.create === 'function' ? Object.create : create;
+
+// Object.keys and Object.getOwnPropertyNames is supported in IE9 however
+// they do show a description and number property on Error objects
+function notObject(object) {
+  return ((typeof object != "object" && typeof object != "function") || object === null);
+}
+
+function keysShim(object) {
+  if (notObject(object)) {
+    throw new TypeError("Object.keys called on a non-object");
+  }
+
+  var result = [];
+  for (var name in object) {
+    if (hasOwnProperty.call(object, name)) {
+      result.push(name);
+    }
+  }
+  return result;
+}
+
+// getOwnPropertyNames is almost the same as Object.keys one key feature
+//  is that it returns hidden properties, since that can't be implemented,
+//  this feature gets reduced so it just shows the length property on arrays
+function propertyShim(object) {
+  if (notObject(object)) {
+    throw new TypeError("Object.getOwnPropertyNames called on a non-object");
+  }
+
+  var result = keysShim(object);
+  if (exports.isArray(object) && exports.indexOf(object, 'length') === -1) {
+    result.push('length');
+  }
+  return result;
+}
+
+var keys = typeof Object.keys === 'function' ? Object.keys : keysShim;
+var getOwnPropertyNames = typeof Object.getOwnPropertyNames === 'function' ?
+  Object.getOwnPropertyNames : propertyShim;
+
+if (new Error().hasOwnProperty('description')) {
+  var ERROR_PROPERTY_FILTER = function (obj, array) {
+    if (toString.call(obj) === '[object Error]') {
+      array = exports.filter(array, function (name) {
+        return name !== 'description' && name !== 'number' && name !== 'message';
+      });
+    }
+    return array;
+  };
+
+  exports.keys = function (object) {
+    return ERROR_PROPERTY_FILTER(object, keys(object));
+  };
+  exports.getOwnPropertyNames = function (object) {
+    return ERROR_PROPERTY_FILTER(object, getOwnPropertyNames(object));
+  };
+} else {
+  exports.keys = keys;
+  exports.getOwnPropertyNames = getOwnPropertyNames;
+}
+
+// Object.getOwnPropertyDescriptor - supported in IE8 but only on dom elements
+function valueObject(value, key) {
+  return { value: value[key] };
+}
+
+if (typeof Object.getOwnPropertyDescriptor === 'function') {
+  try {
+    Object.getOwnPropertyDescriptor({'a': 1}, 'a');
+    exports.getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  } catch (e) {
+    // IE8 dom element issue - use a try catch and default to valueObject
+    exports.getOwnPropertyDescriptor = function (value, key) {
+      try {
+        return Object.getOwnPropertyDescriptor(value, key);
+      } catch (e) {
+        return valueObject(value, key);
+      }
+    };
+  }
+} else {
+  exports.getOwnPropertyDescriptor = valueObject;
+}
+
+},{}],2:[function(require,module,exports){
+
+// not implemented
+// The reason for having an empty file and not throwing is to allow
+// untraditional implementation of this module.
+
+},{}],3:[function(require,module,exports){
+var process=require("__browserify_process");// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var util = require('util');
+var shims = require('_shims');
+
+// resolves . and .. elements in a path array with directory names there
+// must be no slashes, empty elements, or device names (c:\) in the array
+// (so also no leading and trailing slashes - it does not distinguish
+// relative and absolute paths)
+function normalizeArray(parts, allowAboveRoot) {
+  // if the path tries to go above the root, `up` ends up > 0
+  var up = 0;
+  for (var i = parts.length - 1; i >= 0; i--) {
+    var last = parts[i];
+    if (last === '.') {
+      parts.splice(i, 1);
+    } else if (last === '..') {
+      parts.splice(i, 1);
+      up++;
+    } else if (up) {
+      parts.splice(i, 1);
+      up--;
+    }
+  }
+
+  // if the path is allowed to go above the root, restore leading ..s
+  if (allowAboveRoot) {
+    for (; up--; up) {
+      parts.unshift('..');
+    }
+  }
+
+  return parts;
+}
+
+// Split a filename into [root, dir, basename, ext], unix version
+// 'root' is just a slash, or nothing.
+var splitPathRe =
+    /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
+var splitPath = function(filename) {
+  return splitPathRe.exec(filename).slice(1);
+};
+
+// path.resolve([from ...], to)
+// posix version
+exports.resolve = function() {
+  var resolvedPath = '',
+      resolvedAbsolute = false;
+
+  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
+    var path = (i >= 0) ? arguments[i] : process.cwd();
+
+    // Skip empty and invalid entries
+    if (!util.isString(path)) {
+      throw new TypeError('Arguments to path.resolve must be strings');
+    } else if (!path) {
+      continue;
+    }
+
+    resolvedPath = path + '/' + resolvedPath;
+    resolvedAbsolute = path.charAt(0) === '/';
+  }
+
+  // At this point the path should be resolved to a full absolute path, but
+  // handle relative paths to be safe (might happen when process.cwd() fails)
+
+  // Normalize the path
+  resolvedPath = normalizeArray(shims.filter(resolvedPath.split('/'), function(p) {
+    return !!p;
+  }), !resolvedAbsolute).join('/');
+
+  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
+};
+
+// path.normalize(path)
+// posix version
+exports.normalize = function(path) {
+  var isAbsolute = exports.isAbsolute(path),
+      trailingSlash = shims.substr(path, -1) === '/';
+
+  // Normalize the path
+  path = normalizeArray(shims.filter(path.split('/'), function(p) {
+    return !!p;
+  }), !isAbsolute).join('/');
+
+  if (!path && !isAbsolute) {
+    path = '.';
+  }
+  if (path && trailingSlash) {
+    path += '/';
+  }
+
+  return (isAbsolute ? '/' : '') + path;
+};
+
+// posix version
+exports.isAbsolute = function(path) {
+  return path.charAt(0) === '/';
+};
+
+// posix version
+exports.join = function() {
+  var paths = Array.prototype.slice.call(arguments, 0);
+  return exports.normalize(shims.filter(paths, function(p, index) {
+    if (!util.isString(p)) {
+      throw new TypeError('Arguments to path.join must be strings');
+    }
+    return p;
+  }).join('/'));
+};
+
+
+// path.relative(from, to)
+// posix version
+exports.relative = function(from, to) {
+  from = exports.resolve(from).substr(1);
+  to = exports.resolve(to).substr(1);
+
+  function trim(arr) {
+    var start = 0;
+    for (; start < arr.length; start++) {
+      if (arr[start] !== '') break;
+    }
+
+    var end = arr.length - 1;
+    for (; end >= 0; end--) {
+      if (arr[end] !== '') break;
+    }
+
+    if (start > end) return [];
+    return arr.slice(start, end - start + 1);
+  }
+
+  var fromParts = trim(from.split('/'));
+  var toParts = trim(to.split('/'));
+
+  var length = Math.min(fromParts.length, toParts.length);
+  var samePartsLength = length;
+  for (var i = 0; i < length; i++) {
+    if (fromParts[i] !== toParts[i]) {
+      samePartsLength = i;
+      break;
+    }
+  }
+
+  var outputParts = [];
+  for (var i = samePartsLength; i < fromParts.length; i++) {
+    outputParts.push('..');
+  }
+
+  outputParts = outputParts.concat(toParts.slice(samePartsLength));
+
+  return outputParts.join('/');
+};
+
+exports.sep = '/';
+exports.delimiter = ':';
+
+exports.dirname = function(path) {
+  var result = splitPath(path),
+      root = result[0],
+      dir = result[1];
+
+  if (!root && !dir) {
+    // No dirname whatsoever
+    return '.';
+  }
+
+  if (dir) {
+    // It has a dirname, strip trailing slash
+    dir = dir.substr(0, dir.length - 1);
+  }
+
+  return root + dir;
+};
+
+
+exports.basename = function(path, ext) {
+  var f = splitPath(path)[2];
+  // TODO: make this comparison case-insensitive on windows?
+  if (ext && f.substr(-1 * ext.length) === ext) {
+    f = f.substr(0, f.length - ext.length);
+  }
+  return f;
+};
+
+
+exports.extname = function(path) {
+  return splitPath(path)[3];
+};
+
+},{"__browserify_process":5,"_shims":1,"util":4}],4:[function(require,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var shims = require('_shims');
+
+var formatRegExp = /%[sdj%]/g;
+exports.format = function(f) {
+  if (!isString(f)) {
+    var objects = [];
+    for (var i = 0; i < arguments.length; i++) {
+      objects.push(inspect(arguments[i]));
+    }
+    return objects.join(' ');
+  }
+
+  var i = 1;
+  var args = arguments;
+  var len = args.length;
+  var str = String(f).replace(formatRegExp, function(x) {
+    if (x === '%%') return '%';
+    if (i >= len) return x;
+    switch (x) {
+      case '%s': return String(args[i++]);
+      case '%d': return Number(args[i++]);
+      case '%j':
+        try {
+          return JSON.stringify(args[i++]);
+        } catch (_) {
+          return '[Circular]';
+        }
+      default:
+        return x;
+    }
+  });
+  for (var x = args[i]; i < len; x = args[++i]) {
+    if (isNull(x) || !isObject(x)) {
+      str += ' ' + x;
+    } else {
+      str += ' ' + inspect(x);
+    }
+  }
+  return str;
+};
+
+/**
+ * Echos the value of a value. Trys to print the value out
+ * in the best way possible given the different types.
+ *
+ * @param {Object} obj The object to print out.
+ * @param {Object} opts Optional options object that alters the output.
+ */
+/* legacy: obj, showHidden, depth, colors*/
+function inspect(obj, opts) {
+  // default options
+  var ctx = {
+    seen: [],
+    stylize: stylizeNoColor
+  };
+  // legacy...
+  if (arguments.length >= 3) ctx.depth = arguments[2];
+  if (arguments.length >= 4) ctx.colors = arguments[3];
+  if (isBoolean(opts)) {
+    // legacy...
+    ctx.showHidden = opts;
+  } else if (opts) {
+    // got an "options" object
+    exports._extend(ctx, opts);
+  }
+  // set default options
+  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
+  if (isUndefined(ctx.depth)) ctx.depth = 2;
+  if (isUndefined(ctx.colors)) ctx.colors = false;
+  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
+  if (ctx.colors) ctx.stylize = stylizeWithColor;
+  return formatValue(ctx, obj, ctx.depth);
+}
+exports.inspect = inspect;
+
+
+// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
+inspect.colors = {
+  'bold' : [1, 22],
+  'italic' : [3, 23],
+  'underline' : [4, 24],
+  'inverse' : [7, 27],
+  'white' : [37, 39],
+  'grey' : [90, 39],
+  'black' : [30, 39],
+  'blue' : [34, 39],
+  'cyan' : [36, 39],
+  'green' : [32, 39],
+  'magenta' : [35, 39],
+  'red' : [31, 39],
+  'yellow' : [33, 39]
+};
+
+// Don't use 'blue' not visible on cmd.exe
+inspect.styles = {
+  'special': 'cyan',
+  'number': 'yellow',
+  'boolean': 'yellow',
+  'undefined': 'grey',
+  'null': 'bold',
+  'string': 'green',
+  'date': 'magenta',
+  // "name": intentionally not styling
+  'regexp': 'red'
+};
+
+
+function stylizeWithColor(str, styleType) {
+  var style = inspect.styles[styleType];
+
+  if (style) {
+    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
+           '\u001b[' + inspect.colors[style][1] + 'm';
+  } else {
+    return str;
+  }
+}
+
+
+function stylizeNoColor(str, styleType) {
+  return str;
+}
+
+
+function arrayToHash(array) {
+  var hash = {};
+
+  shims.forEach(array, function(val, idx) {
+    hash[val] = true;
+  });
+
+  return hash;
+}
+
+
+function formatValue(ctx, value, recurseTimes) {
+  // Provide a hook for user-specified inspect functions.
+  // Check that value is an object with an inspect function on it
+  if (ctx.customInspect &&
+      value &&
+      isFunction(value.inspect) &&
+      // Filter out the util module, it's inspect function is special
+      value.inspect !== exports.inspect &&
+      // Also filter out any prototype objects using the circular check.
+      !(value.constructor && value.constructor.prototype === value)) {
+    var ret = value.inspect(recurseTimes);
+    if (!isString(ret)) {
+      ret = formatValue(ctx, ret, recurseTimes);
+    }
+    return ret;
+  }
+
+  // Primitive types cannot have properties
+  var primitive = formatPrimitive(ctx, value);
+  if (primitive) {
+    return primitive;
+  }
+
+  // Look up the keys of the object.
+  var keys = shims.keys(value);
+  var visibleKeys = arrayToHash(keys);
+
+  if (ctx.showHidden) {
+    keys = shims.getOwnPropertyNames(value);
+  }
+
+  // Some type of object without properties can be shortcutted.
+  if (keys.length === 0) {
+    if (isFunction(value)) {
+      var name = value.name ? ': ' + value.name : '';
+      return ctx.stylize('[Function' + name + ']', 'special');
+    }
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    }
+    if (isDate(value)) {
+      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+    }
+    if (isError(value)) {
+      return formatError(value);
+    }
+  }
+
+  var base = '', array = false, braces = ['{', '}'];
+
+  // Make Array say that they are Array
+  if (isArray(value)) {
+    array = true;
+    braces = ['[', ']'];
+  }
+
+  // Make functions say that they are functions
+  if (isFunction(value)) {
+    var n = value.name ? ': ' + value.name : '';
+    base = ' [Function' + n + ']';
+  }
+
+  // Make RegExps say that they are RegExps
+  if (isRegExp(value)) {
+    base = ' ' + RegExp.prototype.toString.call(value);
+  }
+
+  // Make dates with properties first say the date
+  if (isDate(value)) {
+    base = ' ' + Date.prototype.toUTCString.call(value);
+  }
+
+  // Make error with message first say the error
+  if (isError(value)) {
+    base = ' ' + formatError(value);
+  }
+
+  if (keys.length === 0 && (!array || value.length == 0)) {
+    return braces[0] + base + braces[1];
+  }
+
+  if (recurseTimes < 0) {
+    if (isRegExp(value)) {
+      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+    } else {
+      return ctx.stylize('[Object]', 'special');
+    }
+  }
+
+  ctx.seen.push(value);
+
+  var output;
+  if (array) {
+    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
+  } else {
+    output = keys.map(function(key) {
+      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
+    });
+  }
+
+  ctx.seen.pop();
+
+  return reduceToSingleString(output, base, braces);
+}
+
+
+function formatPrimitive(ctx, value) {
+  if (isUndefined(value))
+    return ctx.stylize('undefined', 'undefined');
+  if (isString(value)) {
+    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
+                                             .replace(/'/g, "\\'")
+                                             .replace(/\\"/g, '"') + '\'';
+    return ctx.stylize(simple, 'string');
+  }
+  if (isNumber(value))
+    return ctx.stylize('' + value, 'number');
+  if (isBoolean(value))
+    return ctx.stylize('' + value, 'boolean');
+  // For some reason typeof null is "object", so special case here.
+  if (isNull(value))
+    return ctx.stylize('null', 'null');
+}
+
+
+function formatError(value) {
+  return '[' + Error.prototype.toString.call(value) + ']';
+}
+
+
+function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
+  var output = [];
+  for (var i = 0, l = value.length; i < l; ++i) {
+    if (hasOwnProperty(value, String(i))) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          String(i), true));
+    } else {
+      output.push('');
+    }
+  }
+
+  shims.forEach(keys, function(key) {
+    if (!key.match(/^\d+$/)) {
+      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
+          key, true));
+    }
+  });
+  return output;
+}
+
+
+function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
+  var name, str, desc;
+  desc = shims.getOwnPropertyDescriptor(value, key) || { value: value[key] };
+  if (desc.get) {
+    if (desc.set) {
+      str = ctx.stylize('[Getter/Setter]', 'special');
+    } else {
+      str = ctx.stylize('[Getter]', 'special');
+    }
+  } else {
+    if (desc.set) {
+      str = ctx.stylize('[Setter]', 'special');
+    }
+  }
+
+  if (!hasOwnProperty(visibleKeys, key)) {
+    name = '[' + key + ']';
+  }
+  if (!str) {
+    if (shims.indexOf(ctx.seen, desc.value) < 0) {
+      if (isNull(recurseTimes)) {
+        str = formatValue(ctx, desc.value, null);
+      } else {
+        str = formatValue(ctx, desc.value, recurseTimes - 1);
+      }
+      if (str.indexOf('\n') > -1) {
+        if (array) {
+          str = str.split('\n').map(function(line) {
+            return '  ' + line;
+          }).join('\n').substr(2);
+        } else {
+          str = '\n' + str.split('\n').map(function(line) {
+            return '   ' + line;
+          }).join('\n');
+        }
+      }
+    } else {
+      str = ctx.stylize('[Circular]', 'special');
+    }
+  }
+  if (isUndefined(name)) {
+    if (array && key.match(/^\d+$/)) {
+      return str;
+    }
+    name = JSON.stringify('' + key);
+    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
+      name = name.substr(1, name.length - 2);
+      name = ctx.stylize(name, 'name');
+    } else {
+      name = name.replace(/'/g, "\\'")
+                 .replace(/\\"/g, '"')
+                 .replace(/(^"|"$)/g, "'");
+      name = ctx.stylize(name, 'string');
+    }
+  }
+
+  return name + ': ' + str;
+}
+
+
+function reduceToSingleString(output, base, braces) {
+  var numLinesEst = 0;
+  var length = shims.reduce(output, function(prev, cur) {
+    numLinesEst++;
+    if (cur.indexOf('\n') >= 0) numLinesEst++;
+    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
+  }, 0);
+
+  if (length > 60) {
+    return braces[0] +
+           (base === '' ? '' : base + '\n ') +
+           ' ' +
+           output.join(',\n  ') +
+           ' ' +
+           braces[1];
+  }
+
+  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
+}
+
+
+// NOTE: These type checking functions intentionally don't use `instanceof`
+// because it is fragile and can be easily faked with `Object.create()`.
+function isArray(ar) {
+  return shims.isArray(ar);
+}
+exports.isArray = isArray;
+
+function isBoolean(arg) {
+  return typeof arg === 'boolean';
+}
+exports.isBoolean = isBoolean;
+
+function isNull(arg) {
+  return arg === null;
+}
+exports.isNull = isNull;
+
+function isNullOrUndefined(arg) {
+  return arg == null;
+}
+exports.isNullOrUndefined = isNullOrUndefined;
+
+function isNumber(arg) {
+  return typeof arg === 'number';
+}
+exports.isNumber = isNumber;
+
+function isString(arg) {
+  return typeof arg === 'string';
+}
+exports.isString = isString;
+
+function isSymbol(arg) {
+  return typeof arg === 'symbol';
+}
+exports.isSymbol = isSymbol;
+
+function isUndefined(arg) {
+  return arg === void 0;
+}
+exports.isUndefined = isUndefined;
+
+function isRegExp(re) {
+  return isObject(re) && objectToString(re) === '[object RegExp]';
+}
+exports.isRegExp = isRegExp;
+
+function isObject(arg) {
+  return typeof arg === 'object' && arg;
+}
+exports.isObject = isObject;
+
+function isDate(d) {
+  return isObject(d) && objectToString(d) === '[object Date]';
+}
+exports.isDate = isDate;
+
+function isError(e) {
+  return isObject(e) && objectToString(e) === '[object Error]';
+}
+exports.isError = isError;
+
+function isFunction(arg) {
+  return typeof arg === 'function';
+}
+exports.isFunction = isFunction;
+
+function isPrimitive(arg) {
+  return arg === null ||
+         typeof arg === 'boolean' ||
+         typeof arg === 'number' ||
+         typeof arg === 'string' ||
+         typeof arg === 'symbol' ||  // ES6 symbol
+         typeof arg === 'undefined';
+}
+exports.isPrimitive = isPrimitive;
+
+function isBuffer(arg) {
+  return arg && typeof arg === 'object'
+    && typeof arg.copy === 'function'
+    && typeof arg.fill === 'function'
+    && typeof arg.binarySlice === 'function'
+  ;
+}
+exports.isBuffer = isBuffer;
+
+function objectToString(o) {
+  return Object.prototype.toString.call(o);
+}
+
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+// 26 Feb 16:19:34
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
+
+// log is just a thin wrapper to console.log that prepends a timestamp
+exports.log = function() {
+  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
+};
+
+
+/**
+ * Inherit the prototype methods from one constructor into another.
+ *
+ * The Function.prototype.inherits from lang.js rewritten as a standalone
+ * function (not on Function.prototype). NOTE: If this file is to be loaded
+ * during bootstrapping this function needs to be rewritten using some native
+ * functions as prototype setup using normal JavaScript does not work as
+ * expected during bootstrapping (see mirror.js in r114903).
+ *
+ * @param {function} ctor Constructor function which needs to inherit the
+ *     prototype.
+ * @param {function} superCtor Constructor function to inherit prototype from.
+ */
+exports.inherits = function(ctor, superCtor) {
+  ctor.super_ = superCtor;
+  ctor.prototype = shims.create(superCtor.prototype, {
+    constructor: {
+      value: ctor,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+};
+
+exports._extend = function(origin, add) {
+  // Don't do anything if add isn't an object
+  if (!add || !isObject(add)) return origin;
+
+  var keys = shims.keys(add);
+  var i = keys.length;
+  while (i--) {
+    origin[keys[i]] = add[keys[i]];
+  }
+  return origin;
+};
+
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+},{"_shims":1}],5:[function(require,module,exports){
+// shim for using process in browser
+
+var process = module.exports = {};
+
+process.nextTick = (function () {
+    var canSetImmediate = typeof window !== 'undefined'
+    && window.setImmediate;
+    var canPost = typeof window !== 'undefined'
+    && window.postMessage && window.addEventListener
+    ;
+
+    if (canSetImmediate) {
+        return function (f) { return window.setImmediate(f) };
+    }
+
+    if (canPost) {
+        var queue = [];
+        window.addEventListener('message', function (ev) {
+            var source = ev.source;
+            if ((source === window || source === null) && ev.data === 'process-tick') {
+                ev.stopPropagation();
+                if (queue.length > 0) {
+                    var fn = queue.shift();
+                    fn();
+                }
+            }
+        }, true);
+
+        return function nextTick(fn) {
+            queue.push(fn);
+            window.postMessage('process-tick', '*');
+        };
+    }
+
+    return function nextTick(fn) {
+        setTimeout(fn, 0);
+    };
+})();
+
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+}
+
+// TODO(shtylman)
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+
+},{}],6:[function(require,module,exports){
+
+/*!
+ * EJS
+ * Copyright(c) 2012 TJ Holowaychuk <tj@vision-media.ca>
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var utils = require('./utils')
+  , path = require('path')
+  , dirname = path.dirname
+  , extname = path.extname
+  , join = path.join
+  , fs = require('fs')
+  , read = fs.readFileSync;
+
+/**
+ * Filters.
+ *
+ * @type Object
+ */
+
+var filters = exports.filters = require('./filters');
+
+/**
+ * Intermediate js cache.
+ *
+ * @type Object
+ */
+
+var cache = {};
+
+/**
+ * Clear intermediate js cache.
+ *
+ * @api public
+ */
+
+exports.clearCache = function(){
+  cache = {};
+};
+
+/**
+ * Translate filtered code into function calls.
+ *
+ * @param {String} js
+ * @return {String}
+ * @api private
+ */
+
+function filtered(js) {
+  return js.substr(1).split('|').reduce(function(js, filter){
+    var parts = filter.split(':')
+      , name = parts.shift()
+      , args = parts.join(':') || '';
+    if (args) args = ', ' + args;
+    return 'filters.' + name + '(' + js + args + ')';
+  });
+};
+
+/**
+ * Re-throw the given `err` in context to the
+ * `str` of ejs, `filename`, and `lineno`.
+ *
+ * @param {Error} err
+ * @param {String} str
+ * @param {String} filename
+ * @param {String} lineno
+ * @api private
+ */
+
+function rethrow(err, str, filename, lineno){
+  var lines = str.split('\n')
+    , start = Math.max(lineno - 3, 0)
+    , end = Math.min(lines.length, lineno + 3);
+
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? ' >> ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'ejs') + ':'
+    + lineno + '\n'
+    + context + '\n\n'
+    + err.message;
+  
+  throw err;
+}
+
+/**
+ * Parse the given `str` of ejs, returning the function body.
+ *
+ * @param {String} str
+ * @return {String}
+ * @api public
+ */
+
+var parse = exports.parse = function(str, options){
+  var options = options || {}
+    , open = options.open || exports.open || '<%'
+    , close = options.close || exports.close || '%>'
+    , filename = options.filename
+    , compileDebug = options.compileDebug !== false
+    , buf = "";
+
+  buf += 'var buf = [];';
+  if (false !== options._with) buf += '\nwith (locals || {}) { (function(){ ';
+  buf += '\n buf.push(\'';
+
+  var lineno = 1;
+
+  var consumeEOL = false;
+  for (var i = 0, len = str.length; i < len; ++i) {
+    var stri = str[i];
+    if (str.slice(i, open.length + i) == open) {
+      i += open.length
+  
+      var prefix, postfix, line = (compileDebug ? '__stack.lineno=' : '') + lineno;
+      switch (str[i]) {
+        case '=':
+          prefix = "', escape((" + line + ', ';
+          postfix = ")), '";
+          ++i;
+          break;
+        case '-':
+          prefix = "', (" + line + ', ';
+          postfix = "), '";
+          ++i;
+          break;
+        default:
+          prefix = "');" + line + ';';
+          postfix = "; buf.push('";
+      }
+
+      var end = str.indexOf(close, i)
+        , js = str.substring(i, end)
+        , start = i
+        , include = null
+        , n = 0;
+
+      if ('-' == js[js.length-1]){
+        js = js.substring(0, js.length - 2);
+        consumeEOL = true;
+      }
+
+      if (0 == js.trim().indexOf('include')) {
+        var name = js.trim().slice(7).trim();
+        if (!filename) throw new Error('filename option is required for includes');
+        var path = resolveInclude(name, filename);
+        include = read(path, 'utf8');
+        include = exports.parse(include, { filename: path, _with: false, open: open, close: close, compileDebug: compileDebug });
+        buf += "' + (function(){" + include + "})() + '";
+        js = '';
+      }
+
+      while (~(n = js.indexOf("\n", n))) n++, lineno++;
+      if (js.substr(0, 1) == ':') js = filtered(js);
+      if (js) {
+        if (js.lastIndexOf('//') > js.lastIndexOf('\n')) js += '\n';
+        buf += prefix;
+        buf += js;
+        buf += postfix;
+      }
+      i += end - start + close.length - 1;
+
+    } else if (stri == "\\") {
+      buf += "\\\\";
+    } else if (stri == "'") {
+      buf += "\\'";
+    } else if (stri == "\r") {
+      // ignore
+    } else if (stri == "\n") {
+      if (consumeEOL) {
+        consumeEOL = false;
+      } else {
+        buf += "\\n";
+        lineno++;
+      }
+    } else {
+      buf += stri;
+    }
+  }
+
+  if (false !== options._with) buf += "'); })();\n} \nreturn buf.join('');";
+  else buf += "');\nreturn buf.join('');";
+  return buf;
+};
+
+/**
+ * Compile the given `str` of ejs into a `Function`.
+ *
+ * @param {String} str
+ * @param {Object} options
+ * @return {Function}
+ * @api public
+ */
+
+var compile = exports.compile = function(str, options){
+  options = options || {};
+  var escape = options.escape || utils.escape;
+  
+  var input = JSON.stringify(str)
+    , compileDebug = options.compileDebug !== false
+    , client = options.client
+    , filename = options.filename
+        ? JSON.stringify(options.filename)
+        : 'undefined';
+  
+  if (compileDebug) {
+    // Adds the fancy stack trace meta info
+    str = [
+      'var __stack = { lineno: 1, input: ' + input + ', filename: ' + filename + ' };',
+      rethrow.toString(),
+      'try {',
+      exports.parse(str, options),
+      '} catch (err) {',
+      '  rethrow(err, __stack.input, __stack.filename, __stack.lineno);',
+      '}'
+    ].join("\n");
+  } else {
+    str = exports.parse(str, options);
+  }
+  
+  if (options.debug) console.log(str);
+  if (client) str = 'escape = escape || ' + escape.toString() + ';\n' + str;
+
+  try {
+    var fn = new Function('locals, filters, escape, rethrow', str);
+  } catch (err) {
+    if ('SyntaxError' == err.name) {
+      err.message += options.filename
+        ? ' in ' + filename
+        : ' while compiling ejs';
+    }
+    throw err;
+  }
+
+  if (client) return fn;
+
+  return function(locals){
+    return fn.call(this, locals, filters, escape, rethrow);
+  }
+};
+
+/**
+ * Render the given `str` of ejs.
+ *
+ * Options:
+ *
+ *   - `locals`          Local variables object
+ *   - `cache`           Compiled functions are cached, requires `filename`
+ *   - `filename`        Used by `cache` to key caches
+ *   - `scope`           Function execution context
+ *   - `debug`           Output generated function body
+ *   - `open`            Open tag, defaulting to "<%"
+ *   - `close`           Closing tag, defaulting to "%>"
+ *
+ * @param {String} str
+ * @param {Object} options
+ * @return {String}
+ * @api public
+ */
+
+exports.render = function(str, options){
+  var fn
+    , options = options || {};
+
+  if (options.cache) {
+    if (options.filename) {
+      fn = cache[options.filename] || (cache[options.filename] = compile(str, options));
+    } else {
+      throw new Error('"cache" option requires "filename".');
+    }
+  } else {
+    fn = compile(str, options);
+  }
+
+  options.__proto__ = options.locals;
+  return fn.call(options.scope, options);
+};
+
+/**
+ * Render an EJS file at the given `path` and callback `fn(err, str)`.
+ *
+ * @param {String} path
+ * @param {Object|Function} options or callback
+ * @param {Function} fn
+ * @api public
+ */
+
+exports.renderFile = function(path, options, fn){
+  var key = path + ':string';
+
+  if ('function' == typeof options) {
+    fn = options, options = {};
+  }
+
+  options.filename = path;
+
+  var str;
+  try {
+    str = options.cache
+      ? cache[key] || (cache[key] = read(path, 'utf8'))
+      : read(path, 'utf8');
+  } catch (err) {
+    fn(err);
+    return;
+  }
+  fn(null, exports.render(str, options));
+};
+
+/**
+ * Resolve include `name` relative to `filename`.
+ *
+ * @param {String} name
+ * @param {String} filename
+ * @return {String}
+ * @api private
+ */
+
+function resolveInclude(name, filename) {
+  var path = join(dirname(filename), name);
+  var ext = extname(name);
+  if (!ext) path += '.ejs';
+  return path;
+}
+
+// express support
+
+exports.__express = exports.renderFile;
+
+/**
+ * Expose to require().
+ */
+
+if (require.extensions) {
+  require.extensions['.ejs'] = function (module, filename) {
+    filename = filename || module.filename;
+    var options = { filename: filename, client: true }
+      , template = fs.readFileSync(filename).toString()
+      , fn = compile(template, options);
+    module._compile('module.exports = ' + fn.toString() + ';', filename);
+  };
+} else if (require.registerExtension) {
+  require.registerExtension('.ejs', function(src) {
+    return compile(src, {});
+  });
+}
+
+},{"./filters":7,"./utils":8,"fs":2,"path":3}],7:[function(require,module,exports){
+/*!
+ * EJS - Filters
+ * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
+ * MIT Licensed
+ */
+
+/**
+ * First element of the target `obj`.
+ */
+
+exports.first = function(obj) {
+  return obj[0];
+};
+
+/**
+ * Last element of the target `obj`.
+ */
+
+exports.last = function(obj) {
+  return obj[obj.length - 1];
+};
+
+/**
+ * Capitalize the first letter of the target `str`.
+ */
+
+exports.capitalize = function(str){
+  str = String(str);
+  return str[0].toUpperCase() + str.substr(1, str.length);
+};
+
+/**
+ * Downcase the target `str`.
+ */
+
+exports.downcase = function(str){
+  return String(str).toLowerCase();
+};
+
+/**
+ * Uppercase the target `str`.
+ */
+
+exports.upcase = function(str){
+  return String(str).toUpperCase();
+};
+
+/**
+ * Sort the target `obj`.
+ */
+
+exports.sort = function(obj){
+  return Object.create(obj).sort();
+};
+
+/**
+ * Sort the target `obj` by the given `prop` ascending.
+ */
+
+exports.sort_by = function(obj, prop){
+  return Object.create(obj).sort(function(a, b){
+    a = a[prop], b = b[prop];
+    if (a > b) return 1;
+    if (a < b) return -1;
+    return 0;
+  });
+};
+
+/**
+ * Size or length of the target `obj`.
+ */
+
+exports.size = exports.length = function(obj) {
+  return obj.length;
+};
+
+/**
+ * Add `a` and `b`.
+ */
+
+exports.plus = function(a, b){
+  return Number(a) + Number(b);
+};
+
+/**
+ * Subtract `b` from `a`.
+ */
+
+exports.minus = function(a, b){
+  return Number(a) - Number(b);
+};
+
+/**
+ * Multiply `a` by `b`.
+ */
+
+exports.times = function(a, b){
+  return Number(a) * Number(b);
+};
+
+/**
+ * Divide `a` by `b`.
+ */
+
+exports.divided_by = function(a, b){
+  return Number(a) / Number(b);
+};
+
+/**
+ * Join `obj` with the given `str`.
+ */
+
+exports.join = function(obj, str){
+  return obj.join(str || ', ');
+};
+
+/**
+ * Truncate `str` to `len`.
+ */
+
+exports.truncate = function(str, len, append){
+  str = String(str);
+  if (str.length > len) {
+    str = str.slice(0, len);
+    if (append) str += append;
+  }
+  return str;
+};
+
+/**
+ * Truncate `str` to `n` words.
+ */
+
+exports.truncate_words = function(str, n){
+  var str = String(str)
+    , words = str.split(/ +/);
+  return words.slice(0, n).join(' ');
+};
+
+/**
+ * Replace `pattern` with `substitution` in `str`.
+ */
+
+exports.replace = function(str, pattern, substitution){
+  return String(str).replace(pattern, substitution || '');
+};
+
+/**
+ * Prepend `val` to `obj`.
+ */
+
+exports.prepend = function(obj, val){
+  return Array.isArray(obj)
+    ? [val].concat(obj)
+    : val + obj;
+};
+
+/**
+ * Append `val` to `obj`.
+ */
+
+exports.append = function(obj, val){
+  return Array.isArray(obj)
+    ? obj.concat(val)
+    : obj + val;
+};
+
+/**
+ * Map the given `prop`.
+ */
+
+exports.map = function(arr, prop){
+  return arr.map(function(obj){
+    return obj[prop];
+  });
+};
+
+/**
+ * Reverse the given `obj`.
+ */
+
+exports.reverse = function(obj){
+  return Array.isArray(obj)
+    ? obj.reverse()
+    : String(obj).split('').reverse().join('');
+};
+
+/**
+ * Get `prop` of the given `obj`.
+ */
+
+exports.get = function(obj, prop){
+  return obj[prop];
+};
+
+/**
+ * Packs the given `obj` into json string
+ */
+exports.json = function(obj){
+  return JSON.stringify(obj);
+};
+
+},{}],8:[function(require,module,exports){
+
+/*!
+ * EJS
+ * Copyright(c) 2010 TJ Holowaychuk <tj@vision-media.ca>
+ * MIT Licensed
+ */
+
+/**
+ * Escape the given string of `html`.
+ *
+ * @param {String} html
+ * @return {String}
+ * @api private
+ */
+
+exports.escape = function(html){
+  return String(html)
+    .replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/'/g, '&#39;')
+    .replace(/"/g, '&quot;');
+};
+ 
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+
+var Product = require('./product'),
+    Pubsub = require('./util/pubsub'),
+    Storage = require('./util/storage'),
+    constants = require('./constants'),
+    currency = require('./util/currency'),
+    mixin = require('./util/mixin');
+
+
+
+/**
+ * Renders the Mini Cart to the page's DOM.
+ *
+ * @constructor
+ * @param {string} name Name of the cart (used as a key for storage)
+ * @param {duration} number Time in milliseconds that the cart data should persist
+ */
+function Cart(name, duration) {
+    var data, items, settings, len, i;
+
+    this._items = [];
+    this._settings = { bn: constants.BN };
+
+    Pubsub.call(this);
+    Storage.call(this, name, duration);
+
+    if ((data = this.load())) {
+        items = data.items;
+        settings = data.settings;
+
+        if (settings) {
+            this._settings = settings;
+        }
+
+        if (items) {
+            for (i = 0, len = items.length; i < len; i++) {
+                this.add(items[i]);
+            }
+        }
+    }
+}
+
+
+mixin(Cart.prototype, Pubsub.prototype);
+mixin(Cart.prototype, Storage.prototype);
+
+
+/**
+ * Adds an item to the cart. This fires an "add" event.
+ *
+ * @param {object} data Item data
+ * @return {number} Item location in the cart
+ */
+Cart.prototype.add = function add(data) {
+    var that = this,
+        items = this.items(),
+        idx = false,
+        isExisting = false,
+        product, key, len, i;
+
+    // Prune cart settings data from the product
+    for (key in data) {
+        if (constants.SETTINGS.test(key)) {
+            this._settings[key] = data[key];
+            delete data[key];
+        }
+    }
+
+    // Look to see if the same product has already been added
+    for (i = 0, len = items.length; i < len; i++) {
+        if (items[i].isEqual(data)) {
+            product = items[i];
+            product.set('quantity', product.get('quantity') + (parseInt(data.quantity, 10) || 1));
+            idx = i;
+            isExisting = true;
+            break;
+        }
+    }
+
+    // If not, then try to add it
+    if (!product) {
+        product = new Product(data);
+
+        if (product.isValid()) {
+            idx = (this._items.push(product) - 1);
+
+            product.on('change', function (key, value) {
+                that.save();
+                that.fire('change', idx, key, value);
+            });
+
+            this.save();
+        }
+    }
+
+    if (product) {
+        this.fire('add', idx, product, isExisting);
+    }
+
+    return idx;
+};
+
+
+/**
+ * Returns the carts current items.
+ *
+ * @param {number} idx (Optional) Returns only that item.
+ * @return {array|object}
+ */
+Cart.prototype.items = function get(idx) {
+    return (typeof idx === 'number') ? this._items[idx] : this._items;
+};
+
+
+/**
+ * Returns the carts current settings.
+ *
+ * @param {string} name (Optional) Returns only that setting.
+ * @return {array|string}
+ */
+Cart.prototype.settings = function settings(name) {
+    return (name) ? this._settings[name] : this._settings;
+};
+
+
+/**
+ * Returns the cart discount.
+ *
+ * @param {object} config (Optional) Currency formatting options.
+ * @return {number|string}
+ */
+Cart.prototype.discount = function discount(config) {
+    var result = parseFloat(this.settings('discount_amount_cart')) || 0;
+
+    if (!result) {
+        result = (parseFloat(this.settings('discount_rate_cart')) || 0) * this.subtotal() / 100;
+    }
+
+    config = config || {};
+    config.currency = this.settings('currency_code');
+
+    return currency(result, config);
+};
+
+
+/**
+ * Returns the cart total without discounts.
+ *
+ * @param {object} config (Optional) Currency formatting options.
+ * @return {number|string}
+ */
+Cart.prototype.subtotal = function subtotal(config) {
+    var products = this.items(),
+        result = 0,
+        i, len;
+
+    for (i = 0, len = products.length; i < len; i++) {
+        result += products[i].total();
+    }
+
+    config = config || {};
+    config.currency = this.settings('currency_code');
+
+    return currency(result, config);
+};
+
+
+/**
+ * Returns the cart total.
+ *
+ * @param {object} config (Optional) Currency formatting options.
+ * @return {number|string}
+ */
+Cart.prototype.total = function total(config) {
+    var result = 0;
+
+    result += this.subtotal();
+    result -= this.discount();
+
+    config = config || {};
+    config.currency = this.settings('currency_code');
+
+    return currency(result, config);
+};
+
+
+/**
+ * Remove an item from the cart. This fires a "remove" event.
+ *
+ * @param {number} idx Item index to remove.
+ * @return {boolean}
+ */
+Cart.prototype.remove = function remove(idx) {
+    var item = this._items.splice(idx, 1);
+
+    if (this._items.length === 0) {
+        this.destroy();
+    }
+
+    if (item) {
+        this.save();
+        this.fire('remove', idx, item[0]);
+    }
+
+    return !!item.length;
+};
+
+
+/**
+ * Saves the cart data.
+ */
+Cart.prototype.save = function save() {
+    var items = this.items(),
+        settings = this.settings(),
+        data = [],
+        i, len;
+
+    for (i = 0, len = items.length; i < len; i++) {
+        data.push(items[i].get());
+    }
+
+    Storage.prototype.save.call(this, {
+        items: data,
+        settings: settings
+    });
+};
+
+
+/**
+ * Proxies the checkout event
+ * The assumption is the view triggers this and consumers subscribe to it
+ *
+ * @param {object} The initiating event
+ */
+Cart.prototype.checkout = function checkout(evt) {
+    this.fire('checkout', evt);
+};
+
+
+/**
+ * Destroy the cart data. This fires a "destroy" event.
+ */
+Cart.prototype.destroy = function destroy() {
+    Storage.prototype.destroy.call(this);
+
+    this._items = [];
+    this._settings = { bn: constants.BN };
+
+    this.fire('destroy');
+};
+
+
+
+
+module.exports = Cart;
+
+},{"./constants":11,"./product":13,"./util/currency":15,"./util/mixin":18,"./util/pubsub":19,"./util/storage":20}],10:[function(require,module,exports){
+'use strict';
+
+
+var mixin = require('./util/mixin');
+
+
+var defaults = module.exports = {
+
+    name: 'PPMiniCart',
+
+    parent: (typeof document !== 'undefined') ? document.body : null,
+
+    action: 'https://www.paypal.com/cgi-bin/webscr',//producction
+    //action: 'https://www.sandbox.paypal.com/nvp',//test
+
+    target: '',
+
+    duration: 30,
+
+    template: '<%var items = cart.items();var settings = cart.settings();var hasItems = !!items.length;var priceFormat = { format: true, currency: cart.settings("currency_code") };var totalFormat = { format: true, showCode: true };%><form method="post" class="<% if (!hasItems) { %>minicart-empty<% } %>" action="<%= config.action %>" target="<%= config.target %>">    <button type="button" class="minicart-closer">&times;</button>    <ul>        <% for (var i= 0, idx = i + 1, len = items.length; i < len; i++, idx++) { %>        <li class="minicart-item">            <div class="minicart-details-name">                <a class="minicart-name" href="<%= items[i].get("href") %>"><%= items[i].get("item_name") %></a>                <ul class="minicart-attributes">                    <% if (items[i].get("item_number")) { %>                    <li>                        <%= items[i].get("item_number") %>                        <input type="hidden" name="item_number_<%= idx %>" value="<%= items[i].get("item_number") %>" />                    </li>                    <% } %>                    <% if (items[i].discount()) { %>                    <li>                        <%= config.strings.discount %> <%= items[i].discount(priceFormat) %>                        <input type="hidden" name="discount_amount_<%= idx %>" value="<%= items[i].discount() %>" />                    </li>                    <% } %>                    <% for (var options = items[i].options(), j = 0, len2 = options.length; j < len2; j++) { %>                        <li>                            <%= options[j].key %>: <%= options[j].value %>                            <input type="hidden" name="on<%= j %>_<%= idx %>" value="<%= options[j].key %>" />                            <input type="hidden" name="os<%= j %>_<%= idx %>" value="<%= options[j].value %>" />                        </li>                    <% } %>                </ul>            </div>            <div class="minicart-details-quantity">                <input class="minicart-quantity" data-minicart-idx="<%= i %>" name="quantity_<%= idx %>" type="text" pattern="[0-9]*" value="<%= items[i].get("quantity") %>" autocomplete="off" />            </div>            <div class="minicart-details-remove">                <button type="button" class="minicart-remove" data-minicart-idx="<%= i %>">&times;</button>            </div>            <div class="minicart-details-price">                <span class="minicart-price"><%= items[i].total(priceFormat) %></span>            </div>            <input type="hidden" name="item_name_<%= idx %>" value="<%= items[i].get("item_name") %>" />            <input type="hidden" name="amount_<%= idx %>" value="<%= items[i].amount() %>" />            <input type="hidden" name="shipping_<%= idx %>" value="<%= items[i].get("shipping") %>" />            <input type="hidden" name="shipping2_<%= idx %>" value="<%= items[i].get("shipping2") %>" />        </li>        <% } %>    </ul>    <div class="minicart-footer">        <% if (hasItems) { %>            <div class="minicart-subtotal">                <%= config.strings.subtotal %> <%= cart.total(totalFormat) %>            </div>            <button class="minicart-submit" type="submit" data-minicart-alt="<%= config.strings.buttonAlt %>"><%- config.strings.button %></button>        <% } else { %>            <p class="minicart-empty-text"><%= config.strings.empty %></p>        <% } %>    </div>    <input type="hidden" name="cmd" value="_cart" />    <input type="hidden" name="upload" value="1" />    <% for (var key in settings) { %>        <input type="hidden" name="<%= key %>" value="<%= settings[key] %>" />    <% } %></form>',
+
+    styles: '@keyframes pop-in {    0% { opacity: 0; transform: scale(0.1); }    60% { opacity: 1; transform: scale(1.2); }    100% { transform: scale(1); }}@-webkit-keyframes pop-in {    0% { opacity: 0; -webkit-transform: scale(0.1); }    60% { opacity: 1; -webkit-transform: scale(1.2); }    100% { -webkit-transform: scale(1); }}@-moz-keyframes pop-in {    0% { opacity: 0; -moz-transform: scale(0.1); }    60% { opacity: 1; -moz-transform: scale(1.2); }    100% { -moz-transform: scale(1); }}.minicart-showing #PPMiniCart {    display: block;    transform: translateZ(0);    -webkit-transform: translateZ(0);    -moz-transform: translateZ(0);    animation: pop-in 0.25s;    -webkit-animation: pop-in 0.25s;    -moz-animation: pop-in 0.25s;}#PPMiniCart {    display: none;    position: fixed;    left: 50%;    top: 75px;}#PPMiniCart form {    position: relative;    width: 400px;    max-height: 400px;    margin-left: -200px;    padding: 10px 10px 40px;    background: #fbfbfb;    border: 1px solid #d7d7d7;    border-radius: 4px;    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);    font: 15px/normal arial, helvetica;    color: #333;}#PPMiniCart form.minicart-empty {    padding-bottom: 10px;    font-size: 16px;    font-weight: bold;}#PPMiniCart ul {    clear: both;    float: left;    width: 380px;    margin: 5px 0 20px;    padding: 10px;    list-style-type: none;    background: #fff;    border: 1px solid #ccc;    border-radius: 4px;    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);}#PPMiniCart .minicart-empty ul {    display: none;}#PPMiniCart .minicart-closer {    float: right;    margin: -12px -10px 0;    padding: 10px;    background: 0;    border: 0;    font-size: 18px;    cursor: pointer;    font-weight: bold;}#PPMiniCart .minicart-item {    clear: left;    padding: 6px 0;    min-height: 25px;}#PPMiniCart .minicart-item + .minicart-item {    border-top: 1px solid #f2f2f2;}#PPMiniCart .minicart-item a {    color: #333;    text-decoration: none;}#PPMiniCart .minicart-details-name {    float: left;    width: 62%;}#PPMiniCart .minicart-details-quantity {    float: left;    width: 15%;}#PPMiniCart .minicart-details-remove {    float: left;    width: 7%;}#PPMiniCart .minicart-details-price {    float: left;    width: 16%;    text-align: right;}#PPMiniCart .minicart-attributes {    margin: 0;    padding: 0;    background: transparent;    border: 0;    border-radius: 0;    box-shadow: none;    color: #999;    font-size: 12px;    line-height: 22px;}#PPMiniCart .minicart-attributes li {    display: inline;}#PPMiniCart .minicart-attributes li:after {    content: ",";}#PPMiniCart .minicart-attributes li:last-child:after {    content: "";}#PPMiniCart .minicart-quantity {    width: 30px;    height: 18px;    padding: 2px 4px;    border: 1px solid #ccc;    border-radius: 4px;    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);    font-size: 13px;    text-align: right;    transition: border linear 0.2s, box-shadow linear 0.2s;    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;}#PPMiniCart .minicart-quantity:hover {    border-color: #0078C1;}#PPMiniCart .minicart-quantity:focus {    border-color: #0078C1;    outline: 0;    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 3px rgba(0, 120, 193, 0.4);}#PPMiniCart .minicart-remove {    width: 18px;    height: 19px;    margin: 2px 0 0;    padding: 0;    background: #b7b7b7;    border: 1px solid #a3a3a3;    border-radius: 3px;    color: #fff;    font-size: 13px;    opacity: 0.70;    cursor: pointer;}#PPMiniCart .minicart-remove:hover {    opacity: 1;}#PPMiniCart .minicart-footer {    clear: left;}#PPMiniCart .minicart-subtotal {    position: absolute;    bottom: 17px;    padding-left: 6px;    left: 10px;    font-size: 16px;    font-weight: bold;}#PPMiniCart .minicart-submit {    position: absolute;    bottom: 10px;    right: 10px;    min-width: 153px;    height: 33px;    margin-right: 6px;    padding: 0 9px;    border: 1px solid #ffc727;    border-radius: 5px;    color: #000;    text-shadow: 1px 1px 1px #fff6e9;    cursor: pointer;    background: #ffaa00;    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZjZlOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmFhMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);    background: -moz-linear-gradient(top, #fff6e9 0%, #ffaa00 100%);    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff6e9), color-stop(100%,#ffaa00));    background: -webkit-linear-gradient(top, #fff6e9 0%,#ffaa00 100%);    background: -o-linear-gradient(top, #fff6e9 0%,#ffaa00 100%);    background: -ms-linear-gradient(top, #fff6e9 0%,#ffaa00 100%);    background: linear-gradient(to bottom, #fff6e9 0%,#ffaa00 100%);}#PPMiniCart .minicart-submit img {    vertical-align: middle;    padding: 4px 0 0 2px;}',
+
+    strings: {
+        button: 'Check Out with <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal" />',
+        subtotal: 'Subtotal:',
+        discount: 'Discount:',
+        empty: 'Your shopping cart is empty'
+    }
+
+};
+
+
+/**
+ * Mixes in the user config with the default config.
+ *
+ * @param {object} userConfig Configuration overrides
+ * @return {object}
+ */
+module.exports.load = function load(userConfig) {
+    return mixin(defaults, userConfig);
+};
+
+},{"./util/mixin":18}],11:[function(require,module,exports){
+'use strict';
+
+
+module.exports = {
+
+    COMMANDS: { _cart: true, _xclick: true, _donations: true },
+
+    SETTINGS: /^(?:business|currency_code|lc|paymentaction|no_shipping|cn|no_note|invoice|handling_cart|weight_cart|weight_unit|tax_cart|discount_amount_cart|discount_rate_cart|page_style|image_url|cpp_|cs|cbt|return|cancel_return|notify_url|rm|custom|charset)/,
+
+    BN: 'MiniCart_AddToCart_WPS_US',
+
+    KEYUP_TIMEOUT: 500,
+
+    SHOWING_CLASS: 'minicart-showing',
+
+    REMOVE_CLASS: 'minicart-remove',
+
+    CLOSER_CLASS: 'minicart-closer',
+
+    QUANTITY_CLASS: 'minicart-quantity',
+
+    ITEM_CLASS: 'minicart-item',
+
+    ITEM_CHANGED_CLASS: 'minicart-item-changed',
+
+    SUBMIT_CLASS: 'minicart-submit',
+
+    DATA_IDX: 'data-minicart-idx'
+
+};
+
+},{}],12:[function(require,module,exports){
+'use strict';
+
+
+var Cart = require('./cart'),
+    View = require('./view'),
+    config = require('./config'),
+    minicart = {},
+    cartModel,
+    confModel,
+    viewModel;
+
+
+/**
+ * Renders the Mini Cart to the page's DOM.
+ *
+ * @param {object} userConfig Configuration overrides
+ */
+minicart.render = function (userConfig) {
+    confModel = minicart.config = config.load(userConfig);
+    cartModel = minicart.cart = new Cart(confModel.name, confModel.duration);
+    viewModel = minicart.view = new View({
+        config: confModel,
+        cart: cartModel
+    });
+
+    cartModel.on('add', viewModel.addItem, viewModel);
+    cartModel.on('change', viewModel.changeItem, viewModel);
+    cartModel.on('remove', viewModel.removeItem, viewModel);
+    cartModel.on('destroy', viewModel.hide, viewModel);
+};
+
+
+/**
+ * Resets the Mini Cart and its view model
+ */
+minicart.reset = function () {
+    cartModel.destroy();
+
+    viewModel.hide();
+    viewModel.redraw();
+};
+
+
+
+
+// Export to either node or the brower window
+if (typeof window === 'undefined') {
+    module.exports = minicart;
+} else {
+    if (!window.paypal) {
+        window.paypal = {};
+    }
+
+    window.paypal.minicart = minicart;
+}
+
+},{"./cart":9,"./config":10,"./view":22}],13:[function(require,module,exports){
+'use strict';
+
+
+var currency = require('./util/currency'),
+    Pubsub = require('./util/pubsub'),
+    mixin = require('./util/mixin');
+
+
+var parser = {
+    quantity: function (value) {
+        value = parseInt(value, 10);
+
+        if (isNaN(value) || !value) {
+            value = 1;
+        }
+
+        return value;
+    },
+    amount: function (value) {
+        return parseFloat(value) || 0;
+    },
+    href: function (value) {
+        if (value) {
+            return value;
+        } else {
+            return (typeof window !== 'undefined') ? window.location.href : null;
+        }
+    }
+};
+
+
+/**
+ * Creates a new product.
+ *
+ * @constructor
+ * @param {object} data Item data
+ */
+function Product(data) {
+    data.quantity = parser.quantity(data.quantity);
+    data.amount = parser.amount(data.amount);
+    data.href = parser.href(data.href);
+
+    this._data = data;
+    this._options = null;
+    this._discount = null;
+    this._amount = null;
+    this._total = null;
+
+    Pubsub.call(this);
+}
+
+
+mixin(Product.prototype, Pubsub.prototype);
+
+
+/**
+ * Gets the product data.
+ *
+ * @param {string} key (Optional) A key to restrict the returned data to.
+ * @return {array|string}
+ */
+Product.prototype.get = function get(key) {
+    return (key) ? this._data[key] : this._data;
+};
+
+
+/**
+ * Sets a value on the product. This is used rather than manually setting the
+ * value so that we can fire a "change" event.
+ *
+ * @param {string} key
+ * @param {string} value
+ */
+Product.prototype.set = function set(key, value) {
+    var setter = parser[key];
+
+    this._data[key] = setter ? setter(value) : value;
+    this._options = null;
+    this._discount = null;
+    this._amount = null;
+    this._total = null;
+
+    this.fire('change', key);
+};
+
+
+/**
+ * Parse and return the options for this product.
+ *
+ * @return {object}
+ */
+Product.prototype.options = function options() {
+    var result, key, value, amount, i, j;
+
+    if (!this._options) {
+        result = [];
+        i = 0;
+
+        while ((key = this.get('on' + i))) {
+            value = this.get('os' + i);
+            amount = 0;
+            j = 0;
+
+            while (typeof this.get('option_select' + j) !== 'undefined') {
+                if (this.get('option_select' + j) === value) {
+                    amount = parser.amount(this.get('option_amount' + j));
+                    break;
+                }
+
+                j++;
+            }
+
+            result.push({
+                key: key,
+                value: value,
+                amount: amount
+            });
+
+            i++;
+        }
+
+        this._options = result;
+    }
+
+    return this._options;
+};
+
+
+/**
+ * Parse and return the discount for this product.
+ *
+ * @param {object} config (Optional) Currency formatting options.
+ * @return {number|string}
+ */
+Product.prototype.discount = function discount(config) {
+    var flat, rate, num, limit, result, amount;
+
+    if (!this._discount) {
+        result = 0;
+        num = parseInt(this.get('discount_num'), 10) || 0;
+        limit = Math.max(num, this.get('quantity') - 1);
+
+        if (this.get('discount_amount') !== undefined) {
+            flat = parser.amount(this.get('discount_amount'));
+            result += flat;
+            result += parser.amount(this.get('discount_amount2') || flat) * limit;
+        } else if (this.get('discount_rate') !== undefined) {
+            rate = parser.amount(this.get('discount_rate'));
+            amount = this.amount();
+
+            result += rate * amount / 100;
+            result += parser.amount(this.get('discount_rate2') || rate) * amount * limit / 100;
+        }
+
+        this._discount = result;
+    }
+
+    return currency(this._discount, config);
+};
+
+
+/**
+ * Parse and return the total without discounts for this product.
+ *
+ * @param {object} config (Optional) Currency formatting options.
+ * @return {number|string}
+ */
+Product.prototype.amount = function amount(config) {
+    var result, options, len, i;
+
+    if (!this._amount) {
+        result = this.get('amount');
+        options = this.options();
+
+        for (i = 0, len = options.length; i < len; i++) {
+            result += options[i].amount;
+        }
+
+        this._amount = result;
+    }
+
+    return currency(this._amount, config);
+};
+
+
+/**
+ * Parse and return the total for this product.
+ *
+ * @param {object} config (Optional) Currency formatting options.
+ * @return {number|string}
+ */
+Product.prototype.total = function total(config) {
+    var result;
+
+    if (!this._total) {
+        result  = this.get('quantity') * this.amount();
+        result -= this.discount();
+
+        this._total = parser.amount(result);
+    }
+
+    return currency(this._total, config);
+};
+
+
+/**
+ * Determine if this product has the same data as another.
+ *
+ * @param {object|Product} data Other product.
+ * @return {boolean}
+ */
+Product.prototype.isEqual = function isEqual(data) {
+    var match = false;
+
+    if (data instanceof Product) {
+        data = data._data;
+    }
+
+    if (this.get('item_name') === data.item_name) {
+        if (this.get('item_number') === data.item_number) {
+            if (this.get('amount') === parser.amount(data.amount)) {
+                var i = 0;
+
+                match = true;
+
+                while (typeof data['os' + i] !== 'undefined') {
+                    if (this.get('os' + i) !== data['os' + i]) {
+                        match = false;
+                        break;
+                    }
+
+                    i++;
+                }
+            }
+        }
+    }
+
+    return match;
+};
+
+
+/**
+ * Determine if this product is valid.
+ *
+ * @return {boolean}
+ */
+Product.prototype.isValid = function isValid() {
+    return (this.get('item_name') && this.amount() > 0);
+};
+
+
+/**
+ * Destroys this product. Fires a "destroy" event.
+ */
+Product.prototype.destroy = function destroy() {
+    this._data = [];
+    this.fire('destroy', this);
+};
+
+
+
+
+module.exports = Product;
+
+},{"./util/currency":15,"./util/mixin":18,"./util/pubsub":19}],14:[function(require,module,exports){
+/* jshint quotmark:double */
+
+
+"use strict";
+
+
+
+module.exports.add = function add(el, str) {
+    var re;
+
+    if (!el) { return false; }
+
+    if (el && el.classList && el.classList.add) {
+        el.classList.add(str);
+    } else {
+        re = new RegExp("\\b" + str + "\\b");
+
+        if (!re.test(el.className)) {
+            el.className += " " + str;
+        }
+    }
+};
+
+
+module.exports.remove = function remove(el, str) {
+    var re;
+
+    if (!el) { return false; }
+
+    if (el.classList && el.classList.add) {
+        el.classList.remove(str);
+    } else {
+        re = new RegExp("\\b" + str + "\\b");
+
+        if (re.test(el.className)) {
+            el.className = el.className.replace(re, "");
+        }
+    }
+};
+
+
+module.exports.inject = function inject(el, str) {
+    var style;
+
+    if (!el) { return false; }
+
+    if (str) {
+        style = document.createElement("style");
+        style.type = "text/css";
+
+        if (style.styleSheet) {
+            style.styleSheet.cssText = str;
+        } else {
+            style.appendChild(document.createTextNode(str));
+        }
+
+        el.appendChild(style);
+    }
+};
+
+},{}],15:[function(require,module,exports){
+'use strict';
+
+
+var currencies = {
+    AED: { before: '\u062c' },
+    ANG: { before: '\u0192' },
+    ARS: { before: '$', code: true },
+    AUD: { before: '$', code: true },
+    AWG: { before: '\u0192' },
+    BBD: { before: '$', code: true },
+    BGN: { before: '\u043b\u0432' },
+    BMD: { before: '$', code: true },
+    BND: { before: '$', code: true },
+    BRL: { before: 'R$' },
+    BSD: { before: '$', code: true },
+    CAD: { before: '$', code: true },
+    CHF: { before: '', code: true },
+    CLP: { before: '$', code: true },
+    CNY: { before: '\u00A5' },
+    COP: { before: '$', code: true },
+    CRC: { before: '\u20A1' },
+    CZK: { before: 'Kc' },
+    DKK: { before: 'kr' },
+    DOP: { before: '$', code: true },
+    EEK: { before: 'kr' },
+    EUR: { before: '\u20AC' },
+    GBP: { before: '\u00A3' },
+    GTQ: { before: 'Q' },
+    HKD: { before: '$', code: true },
+    HRK: { before: 'kn' },
+    HUF: { before: 'Ft' },
+    IDR: { before: 'Rp' },
+    ILS: { before: '\u20AA' },
+    INR: { before: 'Rs.' },
+    ISK: { before: 'kr' },
+    JMD: { before: 'J$' },
+    JPY: { before: '\u00A5' },
+    KRW: { before: '\u20A9' },
+    KYD: { before: '$', code: true },
+    LTL: { before: 'Lt' },
+    LVL: { before: 'Ls' },
+    MXN: { before: '$', code: true },
+    MYR: { before: 'RM' },
+    NOK: { before: 'kr' },
+    NZD: { before: '$', code: true },
+    PEN: { before: 'S/' },
+    PHP: { before: 'Php' },
+    PLN: { before: 'z' },
+    QAR: { before: '\ufdfc' },
+    RON: { before: 'lei' },
+    RUB: { before: '\u0440\u0443\u0431' },
+    SAR: { before: '\ufdfc' },
+    SEK: { before: 'kr' },
+    SGD: { before: '$', code: true },
+    THB: { before: '\u0E3F' },
+    TRY: { before: 'TL' },
+    TTD: { before: 'TT$' },
+    TWD: { before: 'NT$' },
+    UAH: { before: '\u20b4' },
+    USD: { before: '$', code: true },
+    UYU: { before: '$U' },
+    VEF: { before: 'Bs' },
+    VND: { before: '\u20ab' },
+    XCD: { before: '$', code: true },
+    ZAR: { before: 'R' }
+};
+
+
+module.exports = function currency(amount, config) {
+    var code = config && config.currency || 'USD',
+        value = currencies[code],
+        before = value.before || '',
+        after = value.after || '',
+        length = value.length || 2,
+        showCode = value.code && config && config.showCode,
+        result = amount;
+
+    if (config && config.format) {
+        result = before + result.toFixed(length) + after;
+    }
+
+    if (showCode) {
+        result += ' ' + code;
+    }
+
+    return result;
+};
+
+},{}],16:[function(require,module,exports){
+'use strict';
+
+
+module.exports = (function (window, document) {
+
+    /**
+     * Events are added here for easy reference
+     */
+    var cache = [];
+
+    // NOOP for Node
+    if (!document) {
+        return {
+            add: function () {},
+            remove: function () {}
+        };
+    // Non-IE events
+    } else if (document.addEventListener) {
+        return {
+            /**
+             * Add an event to an object and optionally adjust it's scope
+             *
+             * @param obj {HTMLElement} The object to attach the event to
+             * @param type {string} The type of event excluding "on"
+             * @param fn {function} The function
+             * @param scope {object} Object to adjust the scope to (optional)
+             */
+            add: function (obj, type, fn, scope) {
+                scope = scope || obj;
+
+                var wrappedFn = function (e) { fn.call(scope, e); };
+
+                obj.addEventListener(type, wrappedFn, false);
+                cache.push([obj, type, fn, wrappedFn]);
+            },
+
+
+            /**
+             * Remove an event from an object
+             *
+             * @param obj {HTMLElement} The object to remove the event from
+             * @param type {string} The type of event excluding "on"
+             * @param fn {function} The function
+             */
+            remove: function (obj, type, fn) {
+                var wrappedFn, item, len = cache.length, i;
+
+                for (i = 0; i < len; i++) {
+                    item = cache[i];
+
+                    if (item[0] === obj && item[1] === type && item[2] === fn) {
+                        wrappedFn = item[3];
+
+                        if (wrappedFn) {
+                            obj.removeEventListener(type, wrappedFn, false);
+                            cache = cache.slice(i);
+                            return true;
+                        }
+                    }
+                }
+            }
+        };
+
+    // IE events
+    } else if (document.attachEvent) {
+        return {
+            /**
+             * Add an event to an object and optionally adjust it's scope (IE)
+             *
+             * @param obj {HTMLElement} The object to attach the event to
+             * @param type {string} The type of event excluding "on"
+             * @param fn {function} The function
+             * @param scope {object} Object to adjust the scope to (optional)
+             */
+            add: function (obj, type, fn, scope) {
+                scope = scope || obj;
+
+                var wrappedFn = function () {
+                    var e = window.event;
+                    e.target = e.target || e.srcElement;
+
+                    e.preventDefault = function () {
+                        e.returnValue = false;
+                    };
+
+                    fn.call(scope, e);
+                };
+
+                obj.attachEvent('on' + type, wrappedFn);
+                cache.push([obj, type, fn, wrappedFn]);
+            },
+
+
+            /**
+             * Remove an event from an object (IE)
+             *
+             * @param obj {HTMLElement} The object to remove the event from
+             * @param type {string} The type of event excluding "on"
+             * @param fn {function} The function
+             */
+            remove: function (obj, type, fn) {
+                var wrappedFn, item, len = cache.length, i;
+
+                for (i = 0; i < len; i++) {
+                    item = cache[i];
+
+                    if (item[0] === obj && item[1] === type && item[2] === fn) {
+                        wrappedFn = item[3];
+
+                        if (wrappedFn) {
+                            obj.detachEvent('on' + type, wrappedFn);
+                            cache = cache.slice(i);
+                            return true;
+                        }
+                    }
+                }
+            }
+        };
+    }
+
+})(typeof window === 'undefined' ? null : window, typeof document === 'undefined' ? null : document);
+
+},{}],17:[function(require,module,exports){
+'use strict';
+
+
+var forms = module.exports = {
+
+    parse: function parse(form) {
+        var raw = form.elements,
+            data = {},
+            pair, value, i, len;
+
+        for (i = 0, len = raw.length; i < len; i++) {
+            pair = raw[i];
+
+            if ((value = forms.getInputValue(pair))) {
+                data[pair.name] = value;
+            }
+        }
+
+        return data;
+    },
+
+
+    getInputValue: function getInputValue(input) {
+        var tag = input.tagName.toLowerCase();
+
+        if (tag === 'select') {
+            return input.options[input.selectedIndex].value;
+        } else if (tag === 'textarea') {
+            return input.innerText;
+        } else {
+            if (input.type === 'radio') {
+                return (input.checked) ? input.value : null;
+            } else if (input.type === 'checkbox') {
+                return (input.checked) ? input.value : null;
+            } else {
+                return input.value;
+            }
+        }
+    }
+
+};
+},{}],18:[function(require,module,exports){
+'use strict';
+
+
+var mixin = module.exports = function mixin(dest, source) {
+    var value;
+
+    for (var key in source) {
+        value = source[key];
+
+        if (value && value.constructor === Object) {
+            if (!dest[key]) {
+                dest[key] = value;
+            } else {
+                mixin(dest[key] || {}, value);
+            }
+        } else {
+            dest[key] = value;
+        }
+    }
+
+    return dest;
+};
+
+},{}],19:[function(require,module,exports){
+'use strict';
+
+
+function Pubsub() {
+    this._eventCache = {};
+}
+
+
+Pubsub.prototype.on = function on(name, fn, scope) {
+    var cache = this._eventCache[name];
+
+    if (!cache) {
+        cache = this._eventCache[name] = [];
+    }
+
+    cache.push([fn, scope]);
+};
+
+
+Pubsub.prototype.off = function off(name, fn) {
+    var cache = this._eventCache[name],
+        i, len;
+
+    if (cache) {
+        for (i = 0, len = cache.length; i < len; i++) {
+            if (cache[i] === fn) {
+                cache = cache.splice(i, 1);
+            }
+        }
+    }
+};
+
+
+Pubsub.prototype.fire = function on(name) {
+    var cache = this._eventCache[name], i, len, fn, scope;
+
+    if (cache) {
+        for (i = 0, len = cache.length; i < len; i++) {
+            fn = cache[i][0];
+            scope = cache[i][1] || this;
+
+            if (typeof fn === 'function') {
+                fn.apply(scope, Array.prototype.slice.call(arguments, 1));
+            }
+        }
+    }
+};
+
+
+module.exports = Pubsub;
+
+},{}],20:[function(require,module,exports){
+'use strict';
+
+
+var Storage = module.exports = function Storage(name, duration) {
+    this._name = name;
+    this._duration = duration || 30;
+};
+
+
+var proto = Storage.prototype;
+
+
+proto.load = function () {
+    if (typeof window === 'object' && window.localStorage) {
+        var data = window.localStorage.getItem(this._name), today, expires;
+
+        if (data) {
+            data = JSON.parse(decodeURIComponent(data));
+        }
+
+        if (data && data.expires) {
+            today = new Date();
+            expires = new Date(data.expires);
+
+            if (today > expires) {
+                this.destroy();
+                return;
+            }
+        }
+
+        return data && data.value;
+    }
+};
+
+
+proto.save = function (data) {
+    if (typeof window === 'object' && window.localStorage) {
+        var expires = new Date(), wrapped;
+
+        expires.setTime(expires.getTime() + this._duration * 24 * 60 * 60 * 1000);
+
+        wrapped = {
+            value: data,
+            expires: expires.toGMTString()
+        };
+
+        window.localStorage.setItem(this._name, encodeURIComponent(JSON.stringify(wrapped)));
+    }
+};
+
+
+proto.destroy = function () {
+    if (typeof window === 'object' && window.localStorage) {
+        window.localStorage.removeItem(this._name);
+    }
+};
+
+},{}],21:[function(require,module,exports){
+'use strict';
+
+
+var ejs = require('ejs');
+
+
+module.exports = function template(str, data) {
+    return ejs.render(str, data);
+};
+
+
+// Workaround for IE 8's lack of support
+if (!String.prototype.trim) {
+    String.prototype.trim = function () {
+        return this.replace(/^\s+|\s+$/g, '');
+    };
+}
+
+},{"ejs":6}],22:[function(require,module,exports){
+'use strict';
+
+
+var config = require('./config'),
+    events = require('./util/events'),
+    template = require('./util/template'),
+    forms = require('./util/forms'),
+    css = require('./util/css'),
+    viewevents = require('./viewevents'),
+    constants = require('./constants');
+
+
+
+/**
+ * Creates a view model.
+ *
+ * @constructor
+ * @param {object} model
+ */
+function View(model) {
+    var wrapper;
+
+    this.el = wrapper = document.createElement('div');
+    this.model = model;
+    this.isShowing = false;
+
+    // HTML
+    wrapper.id = config.name;
+    config.parent.appendChild(wrapper);
+
+    // CSS
+    css.inject(document.getElementsByTagName('head')[0], config.styles);
+
+    // JavaScript
+    events.add(document, ('ontouchstart' in window) ? 'touchstart' : 'click', viewevents.click, this);
+    events.add(document, 'keyup', viewevents.keyup, this);
+    events.add(document, 'readystatechange', viewevents.readystatechange, this);
+    events.add(window, 'pageshow', viewevents.pageshow, this);
+}
+
+
+/**
+ * Tells the view to redraw
+ */
+View.prototype.redraw = function redraw() {
+    events.remove(this.el.querySelector('form'), 'submit', this.model.cart.checkout, this.model.cart);
+    this.el.innerHTML = template(config.template, this.model);
+    events.add(this.el.querySelector('form'), 'submit', this.model.cart.checkout, this.model.cart);
+};
+
+
+/**
+ * Tells the view to show
+ */
+View.prototype.show = function show() {
+    if (!this.isShowing) {
+        css.add(document.body, constants.SHOWING_CLASS);
+        this.isShowing = true;
+    }
+};
+
+
+/**
+ * Tells the view to hide
+ */
+View.prototype.hide = function hide() {
+    if (this.isShowing) {
+        css.remove(document.body, constants.SHOWING_CLASS);
+        this.isShowing = false;
+    }
+};
+
+
+/**
+ * Toggles the visibility of the view
+ */
+View.prototype.toggle = function toggle() {
+    this[this.isShowing ? 'hide' : 'show']();
+};
+
+
+/**
+ * Binds cart submit events to a form.
+ *
+ * @param {HTMLElement} form
+ * @return {boolean}
+ */
+View.prototype.bind = function bind(form) {
+    var that = this;
+
+    // Don't bind forms without a cmd value
+    if (!constants.COMMANDS[form.cmd.value]) {
+        return false;
+    }
+
+    // Prevent re-binding forms
+    if (form.hasMinicart) {
+        return false;
+    } else {
+        form.hasMinicart = true;
+    }
+
+    if (form.display) {
+        events.add(form, 'submit', function (e) {
+            e.preventDefault();
+            that.show();
+        });
+    } else {
+        events.add(form, 'submit', function (e) {
+            e.preventDefault(e);
+            that.model.cart.add(forms.parse(form));
+        });
+    }
+
+    return true;
+};
+
+
+/**
+ * Adds an item to the view.
+ *
+ * @param {number} idx
+ * @param {object} data
+ */
+View.prototype.addItem = function addItem(idx, data) {
+    this.redraw();
+    this.show();
+
+    var els = this.el.querySelectorAll('.' + constants.ITEM_CLASS);
+    css.add(els[idx], constants.ITEM_CHANGED_CLASS);
+};
+
+
+/**
+ * Changes an item in the view.
+ *
+ * @param {number} idx
+ * @param {object} data
+ */
+View.prototype.changeItem = function changeItem(idx, data) {
+    this.redraw();
+    this.show();
+
+    var els = this.el.querySelectorAll('.' + constants.ITEM_CLASS);
+    css.add(els[idx], constants.ITEM_CHANGED_CLASS);
+};
+
+
+/**
+ * Removes an item from the view.
+ *
+ * @param {number} idx
+ */
+View.prototype.removeItem = function removeItem(idx) {
+    this.redraw();
+};
+
+
+
+
+module.exports = View;
+
+},{"./config":10,"./constants":11,"./util/css":14,"./util/events":16,"./util/forms":17,"./util/template":21,"./viewevents":23}],23:[function(require,module,exports){
+'use strict';
+
+
+var constants = require('./constants'),
+    events = require('./util/events'),
+    viewevents;
+
+
+module.exports = viewevents = {
+
+    click: function (evt) {
+        var target = evt.target,
+            className = target.className;
+
+        if (this.isShowing) {
+            // Cart close button
+            if (className === constants.CLOSER_CLASS) {
+                this.hide();
+            // Product remove button
+            } else if (className === constants.REMOVE_CLASS) {
+                this.model.cart.remove(target.getAttribute(constants.DATA_IDX));
+            // Product quantity input
+            } else if (className === constants.QUANTITY_CLASS) {
+                target[target.setSelectionRange ? 'setSelectionRange' : 'select'](0, 999);
+            // Outside the cart
+            } else if (!(/input|button|select|option/i.test(target.tagName))) {
+                while (target.nodeType === 1) {
+                    if (target === this.el) {
+                        return;
+                    }
+
+                    target = target.parentNode;
+                }
+
+                this.hide();
+            }
+        }
+    },
+
+
+    keyup: function (evt) {
+        var that = this,
+            target = evt.target,
+            timer;
+
+        if (target.className === constants.QUANTITY_CLASS) {
+            timer = setTimeout(function () {
+                var idx = parseInt(target.getAttribute(constants.DATA_IDX), 10),
+                    cart = that.model.cart,
+                    product = cart.items(idx),
+                    quantity = parseInt(target.value, 10);
+
+                if (product) {
+                    if (quantity > 0) {
+                        product.set('quantity', quantity);
+                    } else if (quantity === 0) {
+                        cart.remove(idx);
+                    }
+                }
+            }, constants.KEYUP_TIMEOUT);
+        }
+    },
+
+
+    readystatechange: function () {
+        if (/interactive|complete/.test(document.readyState)) {
+            var forms, form, i, len;
+
+            // Bind to page's forms
+            forms = document.getElementsByTagName('form');
+
+            for (i = 0, len = forms.length; i < len; i++) {
+                form = forms[i];
+
+                if (form.cmd && constants.COMMANDS[form.cmd.value]) {
+                    this.bind(form);
+                }
+            }
+
+            // Do the initial render when the buttons are ready
+            this.redraw();
+
+            // Only run this once
+            events.remove(document, 'readystatechange', viewevents.readystatechange);
+        }
+    },
+
+
+    pageshow: function (evt) {
+        if (evt.persisted) {
+            this.redraw();
+            this.hide();
+        }
+    }
+
+};
+
+},{"./constants":11,"./util/events":16}]},{},[9,10,11,12,13,14,15,16,17,18,19,20,21,22,23])
+;
