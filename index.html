@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,18 +53,24 @@
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
 
-
+    <!-- preloader -->
+    <link rel="stylesheet" href="css/preloader.css" />
 
 
 </head>
+
 <body>
 
-    <!--<script type="text/javascript">
-        $(document).ready(function () {
-            $("iframe").each(function () { this.pause() });
-        });
-    </script>-->
-    <div class="colorlib-loader"></div>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="images/icon/faviconsame.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="page">
 
@@ -87,7 +94,7 @@
                                     <div class="col-md-3">
                                         <div class="num">
                                             <span class="icon"><i class="icon-mail"></i></span>
-                                            <p>Contacto  <br /> <a href="mailto:cact@clinicasame.com?subject=Contacto para servicio&body=Hola,Me encuentro interesado en ponerme encontacto con ustedes">cact@clinicasame.com</a></p>
+                                            <p>Contacto <br /> <a href="mailto:cact@clinicasame.com?subject=Contacto para servicio&body=Hola,Me encuentro interesado en ponerme encontacto con ustedes">cact@clinicasame.com</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -194,16 +201,16 @@
         <div id="colorlib-slider">
             <div class="container">
                 <div class="row">
-
-                    <div class=" col-md-offset-6">
+                    <div class="col-md-1"></div>
+                    <div class="  col-sm-10">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="4000">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                <!--<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>-->
+                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                <!--<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>-->
 
                             </ol>
                             <div class="carousel-inner">
@@ -214,22 +221,33 @@
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="images/slider/consultorio.jpg" alt="consultorio">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <p class="h1"><strong>Renta de Consultorios</strong><p>
-                                        <p class="h2">Espacios cómodos y accesibles.</p>
+                                        <p class="h1"><strong>Renta de Consultorios</strong>
+                                            <p>
+                                                <p class="h2">Espacios cómodos y accesibles.</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="images/slider/quiro.jpg" alt="quiro">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <p class="h1"><strong>Quirófano</strong><p>
-                                        <p class="h2">Siempre a la vanguardia con equipo médico especializado.</p>
+                                        <p class="h1"><strong>Quirófano</strong>
+                                            <p>
+                                                <p class="h2">Siempre a la vanguardia con equipo médico especializado.</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img class="d-block w-100" src="images/slider/hemodia.jpg" alt="hemodialisis">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <p class="h1"><strong>Hemodiálisis</strong><p>
-                                        <p class="h2">Atención profesional con calidad y calidez.</p>
+                                        <p class="h1"><strong>Hemodiálisis</strong>
+                                            <p>
+                                                <p class="h2">Atención profesional con calidad y calidez.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="images/slider/nuevo06.jpg" alt="Servicio paramédico">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <p class="h1"><strong>Médico</strong>
+                                            <p>
+                                                <p class="h2">Disponible para la comunidad Médica.</p>
                                     </div>
                                 </div>
                                 <!--<div class="carousel-item">
@@ -249,6 +267,7 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
             </div>
         </div>
@@ -277,7 +296,7 @@
                         <div class="services ">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <!--<iframe src="videos/videochalco.mp4" allowfullscreen></iframe>-->
-                                <video src="videos/videochalco.mp4" controls></video>
+                                <video src="videos/videochalco.mp4" controls preload="none"></video>
                             </div>
 
                             <a href="#chalcoinfo" class="collapsed" role="button" data-toggle="collapse" aria-expanded="false">
@@ -288,10 +307,14 @@
                                 <p>Col. San Miguel Jacalones, Chalco</p>
                                 <p>Estado de México, C.P. 56600</p>
                                 <p>Tel. 1734-2551 / 1734-2549</p>
-                                <p><span class="fa fa-facebook-square "></span> facebook.</p>
+                                <p><a href="https://www.facebook.com/hospitalsame/"><span
+                                    class="fa fa-facebook-square "></span>&nbsp;@hospitalsamechalco</a> </p>
+
                                 <p><span class="fa fa-twitter-square "></span> twitter.</p>
-                                <p><span class="fa fa-youtube-play "></span> youtube.</p>
-                                <p><span class="fa fa-instagram "></span> instagram.</p>
+                                <p><a href="https://www.youtube.com/channel/UCaXhhPzc05C6p_v8BPCsSOw"><span
+                                    class="fa fa-youtube-play "></span> &nbsp;Hospital Same</a></p>
+                                <p><a href="https://instagram.com/same_chalco?igshid=98qn873urnmg"><span
+                                    class="fa fa-instagram "></span>&nbsp;@SAME_Chalco</a></p>
                             </div>
                         </div>
 
@@ -303,7 +326,7 @@
 
                             <div class="embed-responsive embed-responsive-16by9">
                                 <!--<iframe src="videos/videoixtapaluca.m4v" allowfullscreen></iframe>-->
-                                <video src="videos/videoixtapaluca.m4v" controls></video>
+                                <video src="videos/videoixtapaluca.m4v" controls preload="none"></video>
                             </div>
 
                             <a href="#ixtapalucainfo" class="collapsed" role="button" data-toggle="collapse" aria-expanded="false">
@@ -315,10 +338,13 @@
                                 <p>Col. Centro Ixtapaluca, Ixtapaluca</p>
                                 <p>Estado de México, C.P. 56530</p>
                                 <p>Tel. 5972-0069</p>
-                                <p><span class="fa fa-facebook-square "></span> facebook.</p>
+                                <p><a href="https://www.facebook.com/HospitalSmisIxtapaluca/"><span
+                                    class="fa fa-facebook-square "></span>&nbsp; @hospitalsmisixtapaluca</a></p>
                                 <p><span class="fa fa-twitter-square "></span> twitter.</p>
-                                <p><span class="fa fa-youtube-play "></span> youtube.</p>
-                                <p><span class="fa fa-instagram "></span> instagram.</p>
+                                <p><a href="https://www.youtube.com/channel/UCaXhhPzc05C6p_v8BPCsSOw"><span
+                                    class="fa fa-youtube-play "></span>&nbsp;Hospital Same</a></p>
+                                <p><a href="https://instagram.com/same_smis_ixtapaluca?igshid=1g2jvurb9u92a"><span
+                                    class="fa fa-instagram "></span>&nbsp;@same_smis_ixtapaluca</a></p>
                             </div>
                         </div>
                     </div>
@@ -329,7 +355,7 @@
                         <div class="services">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <!--<iframe src="videos/videotexcoco.m4v" allowfullscreen></iframe>-->
-                                <video src="videos/videotexcoco.m4v" controls></video>
+                                <video src="videos/videotexcoco.m4v" controls preload="none"></video>
                             </div>
 
                             <a href="#texcocoinfo" class="collapsed" role="button" data-toggle="collapse" aria-expanded="false">
@@ -340,10 +366,13 @@
                                 <p>Col. Centro Texcoco, Texcoco</p>
                                 <p>Estado de México, C.P. 56530</p>
                                 <p>Tel. 0159 5954-2812</p>
-                                <p><span class="fa fa-facebook-square "></span> facebook.</p>
+                                <p><a href="https://www.facebook.com/Hospital-Same-Texcoco-210135936180395/"><span
+                                    class="fa fa-facebook-square "></span>&nbsp;@hospitalsametexcoco</a></p>
                                 <p><span class="fa fa-twitter-square "></span> twitter.</p>
-                                <p><span class="fa fa-youtube-play "></span> youtube.</p>
-                                <p><span class="fa fa-instagram "></span> instagram.</p>
+                                <p><a href="https://www.youtube.com/channel/UCaXhhPzc05C6p_v8BPCsSOw"><span
+                                    class="fa fa-youtube-play "></span>&nbsp;Hospital Same</a></p>
+                                <p><a href="https://instagram.com/same_texcoco?igshid=uu3n0we48ajl"><span
+                                    class="fa fa-instagram "></span>&nbsp;@same_texcoco</a></p>
                             </div>
                         </div>
                     </div>
@@ -378,7 +407,9 @@
 
 
 
-        <div><hr /></div>
+        <div>
+            <hr />
+        </div>
 
         <footer id="colorlib-footer" role="contentinfo">
             <div class="overlay"></div>
@@ -408,16 +439,24 @@
     <div class="sticky-container">
         <ul class="sticky">
             <li>
-                <p><a href="https://es-la.facebook.com/hospitalsame/" target="_blank"><img src="images/social/facebook.png" width="20" height="30"></a></p>
+                <p>
+                    <a href="https://es-la.facebook.com/hospitalsame/" target="_blank"><img src="images/social/facebook.png" width="20" height="30"></a>
+                </p>
             </li>
             <li>
-                <p><a href="https://twitter.com/hospital_same" target="_blank"><img src="images/social/twitter.png" width="25" height="25"></a></p>
+                <p>
+                    <a href="https://twitter.com/hospital_same" target="_blank"><img src="images/social/twitter.png" width="25" height="25"></a>
+                </p>
             </li>
             <li>
-                <p><a href="https://www.youtube.com/channel/UCaXhhPzc05C6p_v8BPCsSOw" target="_blank"><img src="images/social/youtube.png" width="30" height="30"></a></p>
+                <p>
+                    <a href="https://www.youtube.com/channel/UCaXhhPzc05C6p_v8BPCsSOw" target="_blank"><img src="images/social/youtube.png" width="30" height="30"></a>
+                </p>
             </li>
             <li>
-                <p><a href="https://instagram.com/same_chalco?igshid=tpxveo3ouzsf" target="_blank"><img src="images/social/instagram.png" width="30" height="30"></a></p>
+                <p>
+                    <a href="https://instagram.com/same_chalco?igshid=tpxveo3ouzsf" target="_blank"><img src="images/social/instagram.png" width="30" height="30"></a>
+                </p>
             </li>
         </ul>
     </div>
@@ -431,7 +470,7 @@
     <!--<script src="js/bootstrap.min.js"></script>-->
 
     <script src="js/4.0/bootstrap.min.js"></script>
-    <script src="js/4.0/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/4.0/bootstrap.bundle.min.js"></script> -->
     <script src="js/4.0/util.js"></script>
     <script src="js/4.0/carousel.js"></script>
 
@@ -455,5 +494,8 @@
 
     <!-- Social -->
     <script src="js/sppagebuilder.js"></script>
+
+    <script src="js/preloader.js"></script>
 </body>
+
 </html>
